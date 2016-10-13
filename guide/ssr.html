@@ -429,7 +429,7 @@
 </ul>
 <p>例如:</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><div class="line">Vue.component(&#123;</div><div class="line">  <span class="attr">name</span>: <span class="string">'list-item'</span>,</div><div class="line">  <span class="attr">template</span>: <span class="string">'&lt;li&gt;&#123;&#123; item.name &#125;&#125;&lt;/li&gt;'</span>,</div><div class="line">  <span class="attr">props</span>: [<span class="string">'item'</span>],</div><div class="line">  <span class="attr">serverCacheKey</span>: <span class="function"><span class="keyword">function</span> (<span class="params">props</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> props.item.type + <span class="string">'::'</span> + props.item.id</div><div class="line">  &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
-<h3 id="缓存的理想组件"><a href="#缓存的理想组件" class="headerlink" title="缓存的理想组件"></a>缓存的理想组件</h3><p>任何纯组件可以被安全缓存 -  这是保证给任何组件传递一样的数据产生相同的HTML。这些场景的例子🌰包括：</p>
+<h3 id="缓存的理想组件"><a href="#缓存的理想组件" class="headerlink" title="缓存的理想组件"></a>缓存的理想组件</h3><p>任何纯组件可以被安全缓存 -  这是保证给任何组件传递一样的数据产生相同的HTML。这些场景的例子包括：</p>
 <ul>
 <li>静态的组件 (例如 总是尝试一样的HTML,所以 <code>serverCacheKey</code> 函数可以被返回 <code>true</code>)</li>
 <li>列表组件（当有大量列表，缓存他们可以改善性能）</li>
