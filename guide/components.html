@@ -44,7 +44,6 @@
     <li><a href="/guide/" class="nav-link current">教程</a></li>
 <li><a href="/api/" class="nav-link">API</a></li>
 <li><a href="/about/" class="nav-link">参与贡献</a></li>
-<li><a href="/vue-resource/" class="nav-link">vue-resource</a></li>
 <li><a href="/vue-router/" class="nav-link">vue-router</a></li>
 <li><a href="/vuex/" class="nav-link">vuex</a></li>
 <li><a href="/examples/" class="nav-link">示例</a></li>
@@ -72,7 +71,6 @@
         <li><a href="/guide/" class="nav-link current">教程</a></li>
 <li><a href="/api/" class="nav-link">API</a></li>
 <li><a href="/about/" class="nav-link">参与贡献</a></li>
-<li><a href="/vue-resource/" class="nav-link">vue-resource</a></li>
 <li><a href="/vue-router/" class="nav-link">vue-router</a></li>
 <li><a href="/vuex/" class="nav-link">vuex</a></li>
 <li><a href="/examples/" class="nav-link">示例</a></li>
@@ -526,7 +524,7 @@ new Vue({
 <li><p>定义一个基于 prop 值的计算属性。</p>
 </li>
 </ol>
-<p class="tip">注意在 JavaScript 中对象和数组是通过引用传递的，如果 prop 是一个对象或数组，在子组件内部改变它<strong>会影响</strong>父组件的状态。</p>
+<p class="tip">注意在 JavaScript 中对象和数组是引用类型，指向同一个内存空间，如果 prop 是一个对象或数组，在子组件内部改变它<strong>会影响</strong>父组件的状态。</p>
 
 <h3 id="Prop-验证"><a href="#Prop-验证" class="headerlink" title="Prop 验证"></a>Prop 验证</h3><p>组件可以为 props 指定验证要求。如果未指定验证要求，Vue会发出警告。当组件给其他人使用时这很有用。</p>
 <p>prop 是一个对象而不是字符串数组时，它包含验证要求:</p>

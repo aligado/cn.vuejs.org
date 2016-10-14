@@ -44,7 +44,6 @@
     <li><a href="/guide/" class="nav-link">教程</a></li>
 <li><a href="/api/" class="nav-link current">API</a></li>
 <li><a href="/about/" class="nav-link">参与贡献</a></li>
-<li><a href="/vue-resource/" class="nav-link">vue-resource</a></li>
 <li><a href="/vue-router/" class="nav-link">vue-router</a></li>
 <li><a href="/vuex/" class="nav-link current">vuex</a></li>
 <li><a href="/examples/" class="nav-link">示例</a></li>
@@ -72,7 +71,6 @@
         <li><a href="/guide/" class="nav-link">教程</a></li>
 <li><a href="/api/" class="nav-link current">API</a></li>
 <li><a href="/about/" class="nav-link">参与贡献</a></li>
-<li><a href="/vue-resource/" class="nav-link">vue-resource</a></li>
 <li><a href="/vue-router/" class="nav-link">vue-router</a></li>
 <li><a href="/vuex/" class="nav-link current">vuex</a></li>
 <li><a href="/examples/" class="nav-link">示例</a></li>
@@ -261,66 +259,66 @@
     	
     <h1>API 参考</h1>
     <h3 id="Vuex-Store"><a href="#Vuex-Store" class="headerlink" title="Vuex.Store"></a>Vuex.Store</h3><figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">import</span> Vuex <span class="keyword">from</span> <span class="string">'vuex'</span></div><div class="line"></div><div class="line"><span class="keyword">const</span> store = <span class="keyword">new</span> Vuex.Store(&#123; ...options &#125;)</div></pre></td></tr></table></figure>
-<h3 id="Vuex-Store-Constructor-Options"><a href="#Vuex-Store-Constructor-Options" class="headerlink" title="Vuex.Store Constructor Options"></a>Vuex.Store Constructor Options</h3><ul>
+<h3 id="Vuex-Store-构造选项"><a href="#Vuex-Store-构造选项" class="headerlink" title="Vuex.Store 构造选项"></a>Vuex.Store 构造选项</h3><ul>
 <li><p><strong>state</strong></p>
 <ul>
-<li><p>type: <code>Object</code></p>
-<p>The root state object for the Vuex store.</p>
+<li><p>类型： <code>Object</code></p>
+<p>Vuex store 的根state对象。</p>
 <p><a href="state.md">Details</a></p>
 </li>
 </ul>
 </li>
 <li><p><strong>mutations</strong></p>
 <ul>
-<li><p>type: <code>{ [type: string]: Function }</code></p>
-<p>Register mutations on the store. The handler function always receives <code>state</code> as the first argument (will be module local state if defined in a module), and receives a second <code>payload</code> argument if there is one.</p>
-<p><a href="mutations.md">Details</a></p>
+<li><p>类型： <code>{ [type: string]: Function }</code></p>
+<p>在 store 上注册 mutation，Handler function总是接收 state 作为第一个参数（如果定义在模块中，则作为模块的本地状态），如果有则接收 payload 作为第二个参数。</p>
+<p><a href="mutations.md">详细介绍</a></p>
 </li>
 </ul>
 </li>
 <li><p><strong>actions</strong></p>
 <ul>
-<li><p>type: <code>{ [type: string]: Function }</code></p>
-<p>Register actions on the store. The handler function receives a <code>context</code> object that exposes the following properties:</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><div class="line">&#123;</div><div class="line">  state,     <span class="comment">// same as store.state, or local state if in modules</span></div><div class="line">  rootState, <span class="comment">// same as store.state, only in modules</span></div><div class="line">  commit,    <span class="comment">// same as store.commit</span></div><div class="line">  dispatch,  <span class="comment">// same as store.dispatch</span></div><div class="line">  getters    <span class="comment">// same as store.getters</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><a href="actions.md">Details</a></p>
+<li><p>类型： <code>{ [type: string]: Function }</code></p>
+<p>在 store 上注册 action。Handler function接收一个 context 对象，这个对象提供以下属性：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line">&#123;</div><div class="line">  state,     <span class="comment">// 等同于 store.state，如果在模块中则是本地状态</span></div><div class="line">  rootState, <span class="comment">// 等同于 store.state，模块中才有</span></div><div class="line">  commit,    <span class="comment">// 等同于 store.commit</span></div><div class="line">  dispatch,  <span class="comment">// 等同于 store.dispatch</span></div><div class="line">  getters    <span class="comment">// 等同于 store.getters</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><a href="actions.md">详细介绍</a></p>
 </li>
 </ul>
 </li>
 <li><p><strong>getters</strong></p>
 <ul>
-<li><p>type: <code>{ [key: string]: Function }</code></p>
-<p>Register getters on the store. The getter function receives the following arguments:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">state,     // will be module local state if defined in a module.</div><div class="line">getters,   // same as store.getters</div><div class="line">rootState  // same as store.state</div></pre></td></tr></table></figure>
-<p>Registered getters are exposed on <code>store.getters</code>.</p>
-<p><a href="getters.md">Details</a></p>
+<li><p>类型： <code>{ [key: string]: Function }</code></p>
+<p>在 store 上注册 getter，getter 方法接收一下参数：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">state,     // 如果在模块中定义则为模块的本地状态</div><div class="line">getters,   // 等同于 store.getters</div><div class="line">rootState  // 等同于 store.state</div></pre></td></tr></table></figure>
+<p>注册的 getter 被暴露在 store.getters。</p>
+<p><a href="getters.md">详细介绍</a></p>
 </li>
 </ul>
 </li>
 <li><p><strong>modules</strong></p>
 <ul>
-<li><p>type: <code>Object</code></p>
-<p>An object containing sub modules to be merged into the store, in the shape of:</p>
+<li><p>类型： <code>Object</code></p>
+<p>包含了子模块的对象，会被合并到 store，形如：</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">key</span>: &#123;</div><div class="line">    state,</div><div class="line">    mutations,</div><div class="line">    actions?,</div><div class="line">    getters?,</div><div class="line">    modules?</div><div class="line">  &#125;,</div><div class="line">  ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>Each module can contain <code>state</code> and <code>mutations</code> similar to the root options. A module’s state will be attached to the store’s root state using the module’s key. A module’s mutations and getters will only receives the module’s local state as the first argument instead of the root state, and module actions’ <code>context.state</code> will also point to the local state.</p>
-<p><a href="modules.md">Details</a></p>
+<p>每个模块可以包含 state 和 mutations，就像根模块的配置。一个模块的状态使用模块的 key 附加到 store 的根状态上。模块的 mutation 和 getter 将接收 module 的本地状态作为第一个参数，而不是根状态，并且模块 action 的 context.state 也指向本地状态。</p>
+<p><a href="modules.md">详细介绍</a></p>
 </li>
 </ul>
 </li>
 <li><p><strong>plugins</strong></p>
 <ul>
-<li><p>type: <code>Array&lt;Function&gt;</code></p>
-<p>An array of plugin functions to be applied to the store. The plugin simply receives the store as the only argument and can either listen to mutations (for outbound data persistence, logging, or debugging) or dispatch mutations (for inbound data e.g. websockets or observables).</p>
-<p><a href="plugins.md">Details</a></p>
+<li><p>类型： <code>Array&lt;Function&gt;</code></p>
+<p>一个插件方法的数组被应用于 store 上。这些插件直接接收 store 作为唯一参数，也可以监听 mutation（用于外部地数据持久化、记录或调试）或者提交 mutation （用于内部数据，例如 websocket 或 某些观察者）。</p>
+<p><a href="plugins.md">详细介绍</a></p>
 </li>
 </ul>
 </li>
 <li><p><strong>strict</strong></p>
 <ul>
-<li>type: <code>Boolean</code></li>
-<li><p>default: <code>false</code></p>
-<p>Force the Vuex store into strict mode. In strict mode any mutations to Vuex state outside of mutation handlers will throw an Error.</p>
-<p><a href="strict.md">Details</a></p>
+<li>类型： <code>Boolean</code></li>
+<li><p>默认值： <code>false</code></p>
+<p>强制 Vuex store 进入严格模式，在严格模式下，在 mutation 处理器以外修改 Vuex state 则会抛出错误。</p>
+<p><a href="strict.md">详细介绍</a></p>
 </li>
 </ul>
 </li>
@@ -328,60 +326,60 @@
 <h3 id="Vuex-Store-Instance-Properties"><a href="#Vuex-Store-Instance-Properties" class="headerlink" title="Vuex.Store Instance Properties"></a>Vuex.Store Instance Properties</h3><ul>
 <li><p><strong>state</strong></p>
 <ul>
-<li><p>type: <code>Object</code></p>
+<li><p>类型： <code>Object</code></p>
 <p>The root state. Read only.</p>
 </li>
 </ul>
 </li>
 <li><p><strong>getters</strong></p>
 <ul>
-<li><p>type: <code>Object</code></p>
-<p>Exposes registered getters. Read only.</p>
+<li><p>类型： <code>Object</code></p>
+<p>暴露注册的 getter，只读。</p>
 </li>
 </ul>
 </li>
 </ul>
-<h3 id="Vuex-Store-Instance-Methods"><a href="#Vuex-Store-Instance-Methods" class="headerlink" title="Vuex.Store Instance Methods"></a>Vuex.Store Instance Methods</h3><ul>
-<li><p><strong><code>commit(type: string, payload?: any) | commit(mutation: Object)</code></strong></p>
-<p>Commit a mutation. <a href="mutations.md">Details</a></p>
+<h3 id="Vuex-Store-实例方法"><a href="#Vuex-Store-实例方法" class="headerlink" title="Vuex.Store 实例方法"></a>Vuex.Store 实例方法</h3><ul>
+<li><p><strong><code>commit(类型： string, payload?: any) | commit(mutation: Object)</code></strong></p>
+<p>提交一个 mutation. <a href="mutations.md">详细介绍</a></p>
 </li>
 <li><p><strong><code>dispatch(type: string, payload?: any) | dispatch(action: Object)</code></strong></p>
-<p>Dispatch an action. Returns the return value of the triggered action handler, or a Promise if multiple handlers are triggered. <a href="actions.md">Details</a></p>
+<p>分发一个 action。返回 action 方法的返回值，如果多个处理器被触发，那么返回一个 Pormise。<a href="actions.md">详细介绍</a></p>
 </li>
 <li><p><strong><code>replaceState(state: Object)</code></strong></p>
-<p>Replace the store’s root state. Use this only for state hydration / time-travel purposes.</p>
+<p>替换 store 的根状态，仅用于调试 state。</p>
 </li>
 <li><p><strong><code>watch(getter: Function, cb: Function, options?: Object)</code></strong></p>
-<p>Reactively watch a getter function’s return value, and call the callback when the value changes. The getter receives the store’s state as the only argument. Accepts an optional options object that takes the same options as Vue’s <code>vm.$watch</code> method.</p>
-<p>To stop watching, call the returned handle function.</p>
+<p>响应式的监测一个 getter 方法的返回值，当值改变时调用回调。getter 接收 store 的 state 作为唯一参数。接收类似 vm.$watch 方法的参数的可选对象。</p>
+<p>要停止检测，调用该方法的返回值 （watch 的返回值是个方法）。</p>
 </li>
 <li><p><strong><code>subscribe(handler: Function)</code></strong></p>
-<p>Subscribe to store mutations. The <code>handler</code> is called after every mutaiton and receives the mutation descriptor and post-mutation state as arguments:</p>
+<p>订阅（注册监听） store 的 mutation。handler 会再每个 mutation 完成后调用，接收 mutation 的描述对象和 经过 mutation 后的状态作为参数：</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><div class="line">store.subscribe(<span class="function">(<span class="params">mutation, state</span>) =&gt;</span> &#123;</div><div class="line">  <span class="built_in">console</span>.log(mutation.type)</div><div class="line">  <span class="built_in">console</span>.log(mutation.payload)</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
-<p>Most commonly used in plugins. <a href="plugins.md">Details</a></p>
+<p>这是插件中常见的用法。 <a href="plugins.md">详细介绍</a></p>
 </li>
 <li><p><strong><code>registerModule(path: string | Array&lt;string&gt;, module: Module)</code></strong></p>
-<p>Register a dynamic module. <a href="modules.md#dynamic-module-registration">Details</a></p>
+<p>注册一个动态模块。 <a href="modules.md#dynamic-module-registration">详细介绍</a></p>
 </li>
 <li><p><strong><code>unregisterModule(path: string | Array&lt;string&gt;)</code></strong></p>
-<p>Unregister a dynamic module. <a href="modules.md#dynamic-module-registration">Details</a></p>
+<p>注销一个动态模块。 <a href="modules.md#dynamic-module-registration">详细介绍</a></p>
 </li>
 <li><p><strong><code>hotUpdate(newOptions: Object)</code></strong></p>
-<p>Hot swap new actions and mutations. <a href="hot-reload.md">Details</a></p>
+<p>热加载新的 action 和 mutation。 <a href="hot-reload.md">详细介绍</a></p>
 </li>
 </ul>
-<h3 id="Component-Binding-Helpers"><a href="#Component-Binding-Helpers" class="headerlink" title="Component Binding Helpers"></a>Component Binding Helpers</h3><ul>
+<h3 id="组件绑定助手"><a href="#组件绑定助手" class="headerlink" title="组件绑定助手"></a>组件绑定助手</h3><ul>
 <li><p><strong><code>mapState(map: Array&lt;string&gt; | Object): Object</code></strong></p>
-<p>Create component computed options that return the sub tree of the Vuex store. <a href="state.md#the-mapstate-helper">Defails</a></p>
+<p>创建一个组件的计算属性选项，该选项会返回 Vuex store 的子树   Create component computed options that return the sub tree of the Vuex store. <a href="state.md#the-mapstate-helper">详细介绍</a></p>
 </li>
 <li><p><strong><code>mapGetters(map: Array&lt;string&gt; | Object): Object</code></strong></p>
-<p>Create component computed options that return the evaluated value of a getter. <a href="getters.md#the-mapgetters-helper">Details</a></p>
+<p>创建一个组件的计算属性选项，该选项会返回 getter的计算后的值。 <a href="getters.md#the-mapgetters-helper">详细介绍</a></p>
 </li>
 <li><p><strong><code>mapActions(map: Array&lt;string&gt; | Object): Object</code></strong></p>
-<p>Create component methods options that dispatch an action. <a href="actions.md#dispatching-actions-in-components">Details</a></p>
+<p>创建一个组件的methods选项，该选项返回一个 action。 <a href="actions.md#dispatching-actions-in-components">详细介绍</a></p>
 </li>
 <li><p><strong><code>mapMutations(map: Array&lt;string&gt; | Object): Object</code></strong></p>
-<p>Create component methods options that commit a mutation. <a href="mutations.md#commiting-mutations-in-components">Details</a></p>
+<p>创建一个组件的methods选项，该选项提交一个 mutation。 <a href="mutations.md#commiting-mutations-in-components">详细介绍</a></p>
 </li>
 </ul>
 
