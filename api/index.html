@@ -14,8 +14,7 @@
         
         <script src="/js/vue.js"></script>
     </head>
-    <body>
-        <div id="mobile-bar" >
+    <body class="docs">        <div id="mobile-bar" >
             <a class="menu-button"></a>
             <a class="logo" href="/"></a>
         </div>
@@ -63,7 +62,7 @@
 </div>
 
         
-            <div id="main">
+            <div id="main" class="fix-sidebar">
                 
                     
     <div class="sidebar">
@@ -110,8 +109,11 @@
 
 
 <div class="content api with-sidebar ">
-    	
-    <h1></h1>
+    
+      
+
+    
+    
     <h2 id="全局配置"><a href="#全局配置" class="headerlink" title="全局配置"></a>全局配置</h2><p><code>Vue.config</code>  是一个对象，包含 Vue 的全局配置。可以在启动应用之前修改下列属性：</p>
 <h3 id="silent"><a href="#silent" class="headerlink" title="silent"></a>silent</h3><ul>
 <li><p><strong>类型：</strong> <code>boolean</code></p>
@@ -154,6 +156,9 @@
 <li><p><strong>用法：</strong></p>
 <figure class="highlight js"><table><tr><td class="code"><pre><div class="line">Vue.config.errorHandler = <span class="function"><span class="keyword">function</span> (<span class="params">err, vm</span>) </span>&#123;</div><div class="line">  <span class="comment">// handle error</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>指定组件的渲染和观察期间未捕获错误的处理函数。这个处理函数被调用时，可获取错误信息和 Vue 实例。</p>
+<blockquote>
+<p><a href="https://sentry.io" target="_blank" rel="external">Sentry</a>, an error tracking service, provides <a href="https://sentry.io/for/vue/" target="_blank" rel="external">official integration</a> using this option.</p>
+</blockquote>
 </li>
 </ul>
 <h3 id="keyCodes"><a href="#keyCodes" class="headerlink" title="keyCodes"></a>keyCodes</h3><ul>
@@ -162,8 +167,8 @@
 <li><p><strong>默认值：</strong> <code>{}</code></p>
 </li>
 <li><p><strong>用法：</strong></p>
-<figure class="highlight js"><table><tr><td class="code"><pre><div class="line">Vue.config.keyCodes = &#123; <span class="attr">esc</span>: <span class="number">27</span> &#125;</div></pre></td></tr></table></figure>
-<p>自定义 v-on 键位别名。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line">Vue.config.keyCodes = &#123;</div><div class="line">  <span class="attr">v</span>: <span class="number">86</span>,</div><div class="line">  <span class="attr">f1</span>: <span class="number">112</span>,</div><div class="line">  <span class="attr">mediaPlayPause</span>: <span class="number">179</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>给 v-on 自定义键位别名。</p>
 </li>
 </ul>
 <h2 id="全局-API"><a href="#全局-API" class="headerlink" title="全局 API"></a>全局 API</h2><h3 id="Vue-extend">Vue.extend( options )</h3>
@@ -921,7 +926,7 @@
 <p>这个方法返回实例自身，因而可以链式调用其它实例方法。</p>
 </li>
 <li><p><strong>示例：</strong></p>
-<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> MyComponent = Vue.extend(&#123;</div><div class="line">  <span class="attr">template</span>: <span class="string">'&lt;div&gt;Hello!&lt;/div&gt;'</span></div><div class="line">&#125;)</div><div class="line"></div><div class="line"><span class="comment">// 创建并挂载到 #app (会替换 #app)</span></div><div class="line"><span class="keyword">new</span> MyComponent().$mount(<span class="string">'#app'</span>)</div><div class="line"></div><div class="line"><span class="comment">// 同上</span></div><div class="line"><span class="keyword">new</span> MyComponent(&#123; <span class="attr">el</span>: <span class="string">'#app'</span> &#125;)</div><div class="line"></div><div class="line"><span class="comment">// 或者，在文档之外渲染并且随后挂载</span></div><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> MyComponent().$mount()</div><div class="line"><span class="built_in">document</span>.getElementById(<span class="string">'app'</span>).appendChild(vm.$el)</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> MyComponent = Vue.extend(&#123;</div><div class="line">  <span class="attr">template</span>: <span class="string">'&lt;div&gt;Hello!&lt;/div&gt;'</span></div><div class="line">&#125;)</div><div class="line"></div><div class="line"><span class="comment">// 创建并挂载到 #app (会替换 #app)</span></div><div class="line"><span class="keyword">new</span> MyComponent().$mount(<span class="string">'#app'</span>)</div><div class="line"></div><div class="line"><span class="comment">// 同上</span></div><div class="line"><span class="keyword">new</span> MyComponent(&#123; <span class="attr">el</span>: <span class="string">'#app'</span> &#125;)</div><div class="line"></div><div class="line"><span class="comment">// 或者，在文档之外渲染并且随后挂载</span></div><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> MyComponent().$mount()</div><div class="line"><span class="built_in">document</span>.getElementById(<span class="string">'app'</span>).appendChild(component.$el)</div></pre></td></tr></table></figure>
 </li>
 <li><p><strong>另见：</strong></p>
 <ul>

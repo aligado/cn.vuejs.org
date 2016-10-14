@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Vue 实例 - vue.js</title>
+        <title>Deploying For Production - vue.js</title>
         <meta charset="utf-8">
         <meta name="description" content="Vue.js - Intuitive, Fast and Composable MVVM for building interactive interfaces.">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -128,7 +128,7 @@
                 
                 
                 <li>
-                    <a href="/guide/instance.html" class="sidebar-link current">Vue 实例</a>
+                    <a href="/guide/instance.html" class="sidebar-link">Vue 实例</a>
                 </li>
             
                 
@@ -283,7 +283,7 @@
                 
                 
                 <li>
-                    <a href="/guide/deployment.html" class="sidebar-link">Deploying For Production</a>
+                    <a href="/guide/deployment.html" class="sidebar-link current">Deploying For Production</a>
                 </li>
             
                 
@@ -377,53 +377,43 @@
 </div>
 
 
-<div class="content guide with-sidebar instance-guide">
+<div class="content guide with-sidebar deployment-guide">
     
       
 
     
     
-      <h1>Vue 实例</h1>
+      <h1>Deploying For Production</h1>
     
-    <h2 id="构造器"><a href="#构造器" class="headerlink" title="构造器"></a>构造器</h2><p>每个 Vue.js 应用的起步都是通过构造函数 <code>Vue</code> 创建一个 <strong>Vue 的根实例</strong>：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> vm = <span class="keyword">new</span> Vue(&#123;</div><div class="line">  <span class="comment">// 选项</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure>
-<p>一个 Vue 实例其实正是一个 <a href="https://en.wikipedia.org/wiki/Model_View_ViewModel" target="_blank" rel="external">MVVM 模式</a>中所描述的 ViewModel - 因此在文档中经常会使用 <code>vm</code> 这个变量名。</p>
-<p>在实例化 Vue 时，需要传入一个<strong>选项对象</strong>，它可以包含数据、模板、挂载元素、方法、生命周期钩子等选项。全部的选项可以在 <a href="/api">API 文档</a>中查看。</p>
-<p>可以扩展 <code>Vue</code> 构造器，从而用预定义选项创建可复用的<strong>组件构造器</strong>：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> MyComponent = Vue.extend(&#123;</div><div class="line">  <span class="comment">// 扩展选项</span></div><div class="line">&#125;)</div><div class="line"></div><div class="line"><span class="comment">// 所有的 `MyComponent` 实例都将以预定义的扩展选项被创建</span></div><div class="line"><span class="keyword">var</span> myComponentInstance = <span class="keyword">new</span> MyComponent()</div></pre></td></tr></table></figure>
-<p>尽管可以命令式地创建扩展实例，不过在多数情况下将组件构造器注册为一个自定义元素，然后声明式地用在模板中。我们将在后面详细说明<a href="/guide/components.html">组件系统</a>。现在你只需知道所有的 Vue.js 组件其实都是被扩展的 Vue 实例。</p>
-<h2 id="属性与方法"><a href="#属性与方法" class="headerlink" title="属性与方法"></a>属性与方法</h2><p>每个 Vue 实例都会<strong>代理</strong>其 <code>data</code> 对象里所有的属性：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> data = &#123; <span class="attr">a</span>: <span class="number">1</span> &#125;</div><div class="line"><span class="keyword">var</span> vm = <span class="keyword">new</span> Vue(&#123;</div><div class="line">  <span class="attr">data</span>: data</div><div class="line">&#125;)</div><div class="line"></div><div class="line">vm.a === data.a <span class="comment">// -&gt; true</span></div><div class="line"></div><div class="line"><span class="comment">// 设置属性也会影响到原始数据</span></div><div class="line">vm.a = <span class="number">2</span></div><div class="line">data.a <span class="comment">// -&gt; 2</span></div><div class="line"></div><div class="line"><span class="comment">// ... 反之亦然</span></div><div class="line">data.a = <span class="number">3</span></div><div class="line">vm.a <span class="comment">// -&gt; 3</span></div></pre></td></tr></table></figure>
-<p>注意只有这些被代理的属性是<strong>响应的</strong>。如果在实例创建之后添加新的属性到实例上，它不会触发视图更新。我们将在后面详细讨论响应系统。</p>
-<p>除了这些数据属性， Vue 实例暴露了一些有用的实例属性与方法。这些属性与方法都有前缀 <code>$</code>，以便与代理的数据属性区分。例如：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> data = &#123; <span class="attr">a</span>: <span class="number">1</span> &#125;</div><div class="line"><span class="keyword">var</span> vm = <span class="keyword">new</span> Vue(&#123;</div><div class="line">  <span class="attr">el</span>: <span class="string">'#example'</span>,</div><div class="line">  <span class="attr">data</span>: data</div><div class="line">&#125;)</div><div class="line"></div><div class="line">vm.$data === data <span class="comment">// -&gt; true</span></div><div class="line">vm.$el === <span class="built_in">document</span>.getElementById(<span class="string">'example'</span>) <span class="comment">// -&gt; true</span></div><div class="line"></div><div class="line"><span class="comment">// $watch 是一个实例方法</span></div><div class="line">vm.$watch(<span class="string">'a'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">newVal, oldVal</span>) </span>&#123;</div><div class="line">  <span class="comment">// 这个回调将在 `vm.a`  改变后调用</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure>
-<p class="tip">注意，不要在实例属性或者回调函数中（如 <code>vm.$watch(&#39;a&#39;, newVal =&gt; this.myMethod())</code>）使用<a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Functions/Arrow_functions" target="_blank" rel="external">箭头函数</a>。因为箭头函数绑定父上下文，所以 <code>this</code> 不会像预想的一样是 Vue 实例，而是 <code>this.myMethod</code> 未被定义。</p>
-
-<p>实例属性和方法的完整列表中查阅 <a href="/api">API 参考</a>。</p>
-<h2 id="实例生命周期"><a href="#实例生命周期" class="headerlink" title="实例生命周期"></a>实例生命周期</h2><figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> vm = <span class="keyword">new</span> Vue(&#123;</div><div class="line">  <span class="attr">data</span>: &#123;</div><div class="line">    <span class="attr">a</span>: <span class="number">1</span></div><div class="line">  &#125;,</div><div class="line">  <span class="attr">created</span>: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="comment">// `this` 指向 vm 实例</span></div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'a is: '</span> + <span class="keyword">this</span>.a)</div><div class="line">  &#125;</div><div class="line">&#125;)</div><div class="line"><span class="comment">// -&gt; "a is: 1"</span></div></pre></td></tr></table></figure>
-<p>也有一些其它的钩子，在实例生命周期的不同阶段调用，如 <code>mounted</code>、 <code>updated</code> 、<code>destroyed</code> 。钩子的 <code>this</code> 指向调用它的 Vue 实例。一些用户可能会问 Vue.js 是否有“控制器”的概念？答案是，没有。组件的自定义逻辑可以分布在这些钩子中。</p>
-<h2 id="生命周期图示"><a href="#生命周期图示" class="headerlink" title="生命周期图示"></a>生命周期图示</h2><p>下图说明了实例的生命周期。你不需要立马弄明白所有的东西，不过以后它会有帮助。</p>
-<p><img src="/images/lifecycle.png" alt="Lifecycle"></p>
-<p><img src="https://cloud.githubusercontent.com/assets/12537013/17702060/f847b38a-63fe-11e6-9c29-38e58d46f036.png" alt=""></p>
-<hr>
-<blockquote>
-<p>原文： <a href="http://vuejs.org/guide/instance.html" target="_blank" rel="external">http://vuejs.org/guide/instance.html</a></p>
-</blockquote>
-<hr>
+    <h2 id="Stripping-Out-Warnings"><a href="#Stripping-Out-Warnings" class="headerlink" title="Stripping Out Warnings"></a>Stripping Out Warnings</h2><p>The minified standalone build of Vue has already stripped out all the warnings for you for a smaller file size, but when you are using tools like Webpack or Browserify, you will need some additional configuration to achieve this.</p>
+<h3 id="Webpack"><a href="#Webpack" class="headerlink" title="Webpack"></a>Webpack</h3><p>Use Webpack’s <a href="http://webpack.github.io/docs/list-of-plugins.html#defineplugin" target="_blank" rel="external">DefinePlugin</a> to indicate a production environment, so that warning blocks can be automatically dropped by UglifyJS during minification. Example config:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> webpack = <span class="built_in">require</span>(<span class="string">'webpack'</span>)</div><div class="line"></div><div class="line"><span class="built_in">module</span>.exports = &#123;</div><div class="line">  <span class="comment">// ...</span></div><div class="line">  plugins: [</div><div class="line">    <span class="comment">// ...</span></div><div class="line">    <span class="keyword">new</span> webpack.DefinePlugin(&#123;</div><div class="line">      <span class="string">'process.env'</span>: &#123;</div><div class="line">        <span class="attr">NODE_ENV</span>: <span class="string">'"production"'</span></div><div class="line">      &#125;</div><div class="line">    &#125;),</div><div class="line">    <span class="keyword">new</span> webpack.optimize.UglifyJsPlugin(&#123;</div><div class="line">      <span class="attr">compress</span>: &#123;</div><div class="line">        <span class="attr">warnings</span>: <span class="literal">false</span></div><div class="line">      &#125;</div><div class="line">    &#125;)</div><div class="line">  ]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="Browserify"><a href="#Browserify" class="headerlink" title="Browserify"></a>Browserify</h3><ul>
+<li>Run your bundling command with <code>NODE_ENV</code> set to <code>&quot;production&quot;</code>. This tells <code>vueify</code> to avoid including hot-reload and development related code.</li>
+<li>Apply a global <a href="https://github.com/hughsk/envify" target="_blank" rel="external">envify</a> transform to your bundle. This allows the minifier to strip out all the warnings in Vue’s source code wrapped in env variable conditional blocks. For example:</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">NODE_ENV=production browserify -g envify <span class="_">-e</span> main.js | uglifyjs -c -m &gt; build.js</div></pre></td></tr></table></figure>
+<ul>
+<li>To extract styles to a separate css file use a extract-css plugin which is included in vueify.</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">NODE_ENV=production browserify -g envify -p [ vueify/plugins/extract-css -o build.css ] <span class="_">-e</span> main.js | uglifyjs -c -m &gt; build.js</div></pre></td></tr></table></figure>
+<h2 id="Tracking-Runtime-Errors"><a href="#Tracking-Runtime-Errors" class="headerlink" title="Tracking Runtime Errors"></a>Tracking Runtime Errors</h2><p>If a runtime error occurs during a component’s render, it will be passed to the global <code>Vue.config.errorHandler</code> config function if it has been set. It might be a good idea to leverage this hook together with an error-tracking service like <a href="https://sentry.io" target="_blank" rel="external">Sentry</a>, which provides <a href="https://sentry.io/for/vue/" target="_blank" rel="external">an official integration</a> for Vue.</p>
+<h2 id="Extracting-CSS"><a href="#Extracting-CSS" class="headerlink" title="Extracting CSS"></a>Extracting CSS</h2><p>When using <a href="./single-file-components.html">Single-File Components</a>, the <code>&lt;style&gt;</code> tags are injected dynamically at runtime during development. In production you may want to extract the styles across all components into a single CSS file. For details on how to achieve this, consult the respective documentation for <a href="http://vue-loader.vuejs.org/en/configurations/extract-css.html" target="_blank" rel="external">vue-loader</a> and <a href="https://github.com/vuejs/vueify#css-extraction" target="_blank" rel="external">vueify</a>.</p>
+<p>The official <code>webpack</code> template from <code>vue-cli</code> has this already configured out of the box.</p>
 
     
       <div class="guide-links">
         
-          <span>← <a href="/guide/index.html">介绍</a></span>
+          <span>← <a href="/guide/single-file-components.html">单文件组件</a></span>
         
         
-          <span style="float:right"><a href="/guide/syntax.html">模板语法</a> →</span>
+          <span style="float:right"><a href="/guide/routing.html">路由</a> →</span>
         
       </div>
     
     <div class="footer">
       发现错误？想参与编辑？
-      <a href="https://github.com/dingyiming/vuejs.org/tree/2.0-cn/src/guide/instance.md" target="_blank">
+      <a href="https://github.com/dingyiming/vuejs.org/tree/2.0-cn/src/guide/deployment.md" target="_blank">
         在 Github 上编辑此页！
       </a>
     </div>

@@ -14,8 +14,7 @@
         
         <script src="/js/vue.js"></script>
     </head>
-    <body>
-        <div id="mobile-bar" >
+    <body class="docs">        <div id="mobile-bar" >
             <a class="menu-button"></a>
             <a class="logo" href="/"></a>
         </div>
@@ -63,7 +62,7 @@
 </div>
 
         
-            <div id="main">
+            <div id="main" class="fix-sidebar">
                 
                     
     <div class="sidebar">
@@ -212,7 +211,7 @@
                 
                 
                 <li>
-                    <a href="/guide/transitions.html" class="sidebar-link">过渡: 进入, 离开, 和 列表</a>
+                    <a href="/guide/transitions.html" class="sidebar-link">过渡效果</a>
                 </li>
             
                 
@@ -284,6 +283,15 @@
                 
                 
                 <li>
+                    <a href="/guide/deployment.html" class="sidebar-link">Deploying For Production</a>
+                </li>
+            
+                
+                
+                
+                
+                
+                <li>
                     <a href="/guide/routing.html" class="sidebar-link">路由</a>
                 </li>
             
@@ -339,6 +347,15 @@
                 
                 
                 
+                <li>
+                    <a href="/guide/migration-vuex.html" class="sidebar-link">Migration from Vuex 0.6.x to 1.0</a>
+                </li>
+            
+                
+                
+                
+                
+                
                   <li><h3>更多</h3></li>
                 
                 <li>
@@ -361,8 +378,13 @@
 
 
 <div class="content guide with-sidebar computed-guide">
-    	
-    <h1>计算属性</h1>
+    
+      
+
+    
+    
+      <h1>计算属性</h1>
+    
     <h2 id="计算属性"><a href="#计算属性" class="headerlink" title="计算属性"></a>计算属性</h2><p>在模板中绑定表达式是非常便利的，但是它们实际上只用于简单的操作。模板是为了描述视图的结构。在模板中放入太多的逻辑会让模板过重且难以维护。例如：</p>
 <figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"example"</span>&gt;</span></div><div class="line">  &#123;&#123; message.split('').reverse().join('') &#125;&#125;</div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
 <p>在这种情况下，模板不再简单和清晰。在实现反向显示 <code>message</code> 之前，你应该确认它。这个问题在你不止一次反向显示 message 的时候变得更加糟糕。</p>

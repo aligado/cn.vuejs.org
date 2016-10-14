@@ -14,8 +14,7 @@
         
         <script src="/js/vue.js"></script>
     </head>
-    <body>
-        <div id="mobile-bar" >
+    <body class="docs">        <div id="mobile-bar" >
             <a class="menu-button"></a>
             <a class="logo" href="/"></a>
         </div>
@@ -63,7 +62,7 @@
 </div>
 
         
-            <div id="main">
+            <div id="main" class="fix-sidebar">
                 
                     
     <div class="sidebar">
@@ -256,8 +255,13 @@
 
 
 <div class="content vuex with-sidebar ">
-    	
-    <h1>热重载</h1>
+    
+      
+
+    
+    
+      <h1>热重载</h1>
+    
     <p>Vuex 支持在开发中使用webpack的<a href="https://webpack.github.io/docs/hot-module-replacement.html" target="_blank" rel="external">Hot Module Replacement API</a> 热重载 mutations，modules ，actions 和 getters，你也可以在 Browserify 里使用  <a href="https://github.com/AgentME/browserify-hmr/" target="_blank" rel="external">browserify-hmr</a> 插件来实现同样的功能。</p>
 <p>对于mutations 和 modules，你只需要简单地调用 store.hotUpdate():</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="comment">// store.js</span></div><div class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span></div><div class="line"><span class="keyword">import</span> Vuex <span class="keyword">from</span> <span class="string">'vuex'</span></div><div class="line"><span class="keyword">import</span> mutations <span class="keyword">from</span> <span class="string">'./mutations'</span></div><div class="line"><span class="keyword">import</span> moduleA <span class="keyword">from</span> <span class="string">'./modules/a'</span></div><div class="line"></div><div class="line">Vue.use(Vuex)</div><div class="line"></div><div class="line"><span class="keyword">const</span> state = &#123; ... &#125;</div><div class="line"></div><div class="line"><span class="keyword">const</span> store = <span class="keyword">new</span> Vuex.Store(&#123;</div><div class="line">  state,</div><div class="line">  mutations,</div><div class="line">  <span class="attr">modules</span>: &#123;</div><div class="line">    <span class="attr">a</span>: moduleA</div><div class="line">  &#125;</div><div class="line">&#125;)</div><div class="line"></div><div class="line"><span class="keyword">if</span> (<span class="built_in">module</span>.hot) &#123;</div><div class="line">  <span class="comment">// 使 actions 和 mutations 成为可热重载模块</span></div><div class="line">  <span class="built_in">module</span>.hot.accept([<span class="string">'./mutations'</span>, <span class="string">'./modules/a'</span>], () =&gt; &#123;</div><div class="line">    <span class="comment">// 获取更新后的模块</span></div><div class="line">    <span class="comment">// 因为 babel 6 的模块编译格式问题，这里需要加上 .default</span></div><div class="line">    <span class="keyword">const</span> newMutations = <span class="built_in">require</span>(<span class="string">'./mutations'</span>).default</div><div class="line">    <span class="keyword">const</span> newModuleA = <span class="built_in">require</span>(<span class="string">'./modules/a'</span>).default</div><div class="line">    <span class="comment">// 成新的 mutation 和 mudule</span></div><div class="line">    store.hotUpdate(&#123;</div><div class="line">      <span class="attr">mutations</span>: newMutations,</div><div class="line">      <span class="attr">modules</span>: &#123;</div><div class="line">        <span class="attr">a</span>: newModuleA</div><div class="line">      &#125;</div><div class="line">    &#125;)</div><div class="line">  &#125;)</div><div class="line">&#125;</div></pre></td></tr></table></figure>

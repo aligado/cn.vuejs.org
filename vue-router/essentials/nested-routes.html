@@ -14,8 +14,7 @@
         
         <script src="/js/vue.js"></script>
     </head>
-    <body>
-        <div id="mobile-bar" >
+    <body class="docs">        <div id="mobile-bar" >
             <a class="menu-button"></a>
             <a class="logo" href="/"></a>
         </div>
@@ -63,7 +62,7 @@
 </div>
 
         
-            <div id="main">
+            <div id="main" class="fix-sidebar">
                 
                     
     <div class="sidebar">
@@ -312,8 +311,13 @@
 
 
 <div class="content vue-router with-sidebar ">
-    	
-    <h1>嵌套路由</h1>
+    
+      
+
+    
+    
+      <h1>嵌套路由</h1>
+    
     <p>实际生活中的应用界面，通常由多层嵌套的组件组合而成。同样地，URL 中各段动态路径也按某种结构对应嵌套的各层组件，例如：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">/user/foo/profile                     /user/foo/posts</div><div class="line">+------------------+                  +-----------------+</div><div class="line">| User             |                  | User            |</div><div class="line">| +--------------+ |                  | +-------------+ |</div><div class="line">| | Profile      | |  +------------&gt;  | | Posts       | |</div><div class="line">| |              | |                  | |             | |</div><div class="line">| +--------------+ |                  | +-------------+ |</div><div class="line">+------------------+                  +-----------------+</div></pre></td></tr></table></figure>
 <p>借助 <code>vue-router</code>，使用嵌套路由配置，就可以很简单地表达这种关系。</p>

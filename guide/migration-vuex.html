@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Vue 实例 - vue.js</title>
+        <title>Migration from Vuex 0.6.x to 1.0 - vue.js</title>
         <meta charset="utf-8">
         <meta name="description" content="Vue.js - Intuitive, Fast and Composable MVVM for building interactive interfaces.">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -44,7 +44,7 @@
 <li><a href="/api/" class="nav-link">API</a></li>
 <li><a href="/about/" class="nav-link">参与贡献</a></li>
 <li><a href="/vue-router/" class="nav-link">vue-router</a></li>
-<li><a href="/vuex/" class="nav-link">vuex</a></li>
+<li><a href="/vuex/" class="nav-link current">vuex</a></li>
 <li><a href="/examples/" class="nav-link">示例</a></li>
 <li><a href="/more/" class="nav-link">更多</a></li>
 <li class="nav-dropdown-container">
@@ -71,7 +71,7 @@
 <li><a href="/api/" class="nav-link">API</a></li>
 <li><a href="/about/" class="nav-link">参与贡献</a></li>
 <li><a href="/vue-router/" class="nav-link">vue-router</a></li>
-<li><a href="/vuex/" class="nav-link">vuex</a></li>
+<li><a href="/vuex/" class="nav-link current">vuex</a></li>
 <li><a href="/examples/" class="nav-link">示例</a></li>
 <li><a href="/more/" class="nav-link">更多</a></li>
 <li class="nav-dropdown-container">
@@ -128,7 +128,7 @@
                 
                 
                 <li>
-                    <a href="/guide/instance.html" class="sidebar-link current">Vue 实例</a>
+                    <a href="/guide/instance.html" class="sidebar-link">Vue 实例</a>
                 </li>
             
                 
@@ -348,7 +348,7 @@
                 
                 
                 <li>
-                    <a href="/guide/migration-vuex.html" class="sidebar-link">Migration from Vuex 0.6.x to 1.0</a>
+                    <a href="/guide/migration-vuex.html" class="sidebar-link current">Migration from Vuex 0.6.x to 1.0</a>
                 </li>
             
                 
@@ -377,53 +377,71 @@
 </div>
 
 
-<div class="content guide with-sidebar instance-guide">
+<div class="content guide with-sidebar migration-vuex-guide">
     
       
 
     
     
-      <h1>Vue 实例</h1>
+      <h1>Migration from Vuex 0.6.x to 1.0</h1>
     
-    <h2 id="构造器"><a href="#构造器" class="headerlink" title="构造器"></a>构造器</h2><p>每个 Vue.js 应用的起步都是通过构造函数 <code>Vue</code> 创建一个 <strong>Vue 的根实例</strong>：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> vm = <span class="keyword">new</span> Vue(&#123;</div><div class="line">  <span class="comment">// 选项</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure>
-<p>一个 Vue 实例其实正是一个 <a href="https://en.wikipedia.org/wiki/Model_View_ViewModel" target="_blank" rel="external">MVVM 模式</a>中所描述的 ViewModel - 因此在文档中经常会使用 <code>vm</code> 这个变量名。</p>
-<p>在实例化 Vue 时，需要传入一个<strong>选项对象</strong>，它可以包含数据、模板、挂载元素、方法、生命周期钩子等选项。全部的选项可以在 <a href="/api">API 文档</a>中查看。</p>
-<p>可以扩展 <code>Vue</code> 构造器，从而用预定义选项创建可复用的<strong>组件构造器</strong>：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> MyComponent = Vue.extend(&#123;</div><div class="line">  <span class="comment">// 扩展选项</span></div><div class="line">&#125;)</div><div class="line"></div><div class="line"><span class="comment">// 所有的 `MyComponent` 实例都将以预定义的扩展选项被创建</span></div><div class="line"><span class="keyword">var</span> myComponentInstance = <span class="keyword">new</span> MyComponent()</div></pre></td></tr></table></figure>
-<p>尽管可以命令式地创建扩展实例，不过在多数情况下将组件构造器注册为一个自定义元素，然后声明式地用在模板中。我们将在后面详细说明<a href="/guide/components.html">组件系统</a>。现在你只需知道所有的 Vue.js 组件其实都是被扩展的 Vue 实例。</p>
-<h2 id="属性与方法"><a href="#属性与方法" class="headerlink" title="属性与方法"></a>属性与方法</h2><p>每个 Vue 实例都会<strong>代理</strong>其 <code>data</code> 对象里所有的属性：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> data = &#123; <span class="attr">a</span>: <span class="number">1</span> &#125;</div><div class="line"><span class="keyword">var</span> vm = <span class="keyword">new</span> Vue(&#123;</div><div class="line">  <span class="attr">data</span>: data</div><div class="line">&#125;)</div><div class="line"></div><div class="line">vm.a === data.a <span class="comment">// -&gt; true</span></div><div class="line"></div><div class="line"><span class="comment">// 设置属性也会影响到原始数据</span></div><div class="line">vm.a = <span class="number">2</span></div><div class="line">data.a <span class="comment">// -&gt; 2</span></div><div class="line"></div><div class="line"><span class="comment">// ... 反之亦然</span></div><div class="line">data.a = <span class="number">3</span></div><div class="line">vm.a <span class="comment">// -&gt; 3</span></div></pre></td></tr></table></figure>
-<p>注意只有这些被代理的属性是<strong>响应的</strong>。如果在实例创建之后添加新的属性到实例上，它不会触发视图更新。我们将在后面详细讨论响应系统。</p>
-<p>除了这些数据属性， Vue 实例暴露了一些有用的实例属性与方法。这些属性与方法都有前缀 <code>$</code>，以便与代理的数据属性区分。例如：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> data = &#123; <span class="attr">a</span>: <span class="number">1</span> &#125;</div><div class="line"><span class="keyword">var</span> vm = <span class="keyword">new</span> Vue(&#123;</div><div class="line">  <span class="attr">el</span>: <span class="string">'#example'</span>,</div><div class="line">  <span class="attr">data</span>: data</div><div class="line">&#125;)</div><div class="line"></div><div class="line">vm.$data === data <span class="comment">// -&gt; true</span></div><div class="line">vm.$el === <span class="built_in">document</span>.getElementById(<span class="string">'example'</span>) <span class="comment">// -&gt; true</span></div><div class="line"></div><div class="line"><span class="comment">// $watch 是一个实例方法</span></div><div class="line">vm.$watch(<span class="string">'a'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">newVal, oldVal</span>) </span>&#123;</div><div class="line">  <span class="comment">// 这个回调将在 `vm.a`  改变后调用</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure>
-<p class="tip">注意，不要在实例属性或者回调函数中（如 <code>vm.$watch(&#39;a&#39;, newVal =&gt; this.myMethod())</code>）使用<a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Functions/Arrow_functions" target="_blank" rel="external">箭头函数</a>。因为箭头函数绑定父上下文，所以 <code>this</code> 不会像预想的一样是 Vue 实例，而是 <code>this.myMethod</code> 未被定义。</p>
-
-<p>实例属性和方法的完整列表中查阅 <a href="/api">API 参考</a>。</p>
-<h2 id="实例生命周期"><a href="#实例生命周期" class="headerlink" title="实例生命周期"></a>实例生命周期</h2><figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> vm = <span class="keyword">new</span> Vue(&#123;</div><div class="line">  <span class="attr">data</span>: &#123;</div><div class="line">    <span class="attr">a</span>: <span class="number">1</span></div><div class="line">  &#125;,</div><div class="line">  <span class="attr">created</span>: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="comment">// `this` 指向 vm 实例</span></div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'a is: '</span> + <span class="keyword">this</span>.a)</div><div class="line">  &#125;</div><div class="line">&#125;)</div><div class="line"><span class="comment">// -&gt; "a is: 1"</span></div></pre></td></tr></table></figure>
-<p>也有一些其它的钩子，在实例生命周期的不同阶段调用，如 <code>mounted</code>、 <code>updated</code> 、<code>destroyed</code> 。钩子的 <code>this</code> 指向调用它的 Vue 实例。一些用户可能会问 Vue.js 是否有“控制器”的概念？答案是，没有。组件的自定义逻辑可以分布在这些钩子中。</p>
-<h2 id="生命周期图示"><a href="#生命周期图示" class="headerlink" title="生命周期图示"></a>生命周期图示</h2><p>下图说明了实例的生命周期。你不需要立马弄明白所有的东西，不过以后它会有帮助。</p>
-<p><img src="/images/lifecycle.png" alt="Lifecycle"></p>
-<p><img src="https://cloud.githubusercontent.com/assets/12537013/17702060/f847b38a-63fe-11e6-9c29-38e58d46f036.png" alt=""></p>
-<hr>
-<blockquote>
-<p>原文： <a href="http://vuejs.org/guide/instance.html" target="_blank" rel="external">http://vuejs.org/guide/instance.html</a></p>
+    <blockquote>
+<p>Vuex 2.0 is released, but this guide only covers the migration to 1.0? Is that a typo? Also, it looks like Vuex 1.0 and 2.0 were released simultaneously. What’s going on? Which one should I use and what’s compatible with Vue 2.0?</p>
 </blockquote>
-<hr>
+<p>Both Vuex 1.0 and 2.0:</p>
+<ul>
+<li>fully support both Vue 1.0 and 2.0</li>
+<li>will be maintained for the forseeable future</li>
+</ul>
+<p>They have slightly different target users however.</p>
+<p><strong>Vuex 2.0</strong> is a radical redesign and simplification of the API, for those who are starting new projects or want to be on the cutting edge of client-side state management. <strong>It is not covered by this migration guide</strong>, so you should check out <a href="https://vuex.vuejs.org/en/index.html" target="_blank" rel="external">the Vuex 2.0 docs</a> if you’d like to learn more about it.</p>
+<p><strong>Vuex 1.0</strong> is mostly backwards-compatible, so requires very few changes to upgrade. It is recommended for those with large existing codebases or who just want the smoothest possible upgrade path to Vue 2.0. This guide is dedicated to facilitating that process, but only includes migration notes. For the complete usage guide, see <a href="https://github.com/vuejs/vuex/tree/1.0/docs/en" target="_blank" rel="external">the Vuex 1.0 docs</a>.</p>
+<p class="tip">The list of deprecations below should be relatively complete, but the migration helper is still being updated to catch them.</p>
+
+<h2 id="store-watch-with-String-Property-Path-deprecated"><a href="#store-watch-with-String-Property-Path-deprecated" class="headerlink" title="store.watch with String Property Path deprecated"></a><code>store.watch</code> with String Property Path <sup>deprecated</sup></h2><p><code>store.watch</code> now only accept functions. So for example, you would have to replace:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line">store.watch(<span class="string">'user.notifications'</span>, callback)</div></pre></td></tr></table></figure>
+<p>with:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line">store.watch(</div><div class="line">  <span class="comment">// When the returned result changes...</span></div><div class="line">  <span class="function"><span class="keyword">function</span> (<span class="params">state</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> state.user.notifications</div><div class="line">  &#125;,</div><div class="line">  <span class="comment">// Run this callback</span></div><div class="line">  callback</div><div class="line">)</div></pre></td></tr></table></figure>
+<p>This gives you more complete control over the reactive properties you’d like to watch.</p>
+
+<div class="upgrade-path">
+  <h4>Upgrade Path</h4>
+  <p>Run the <a href="https://github.com/vuejs/vue-migration-helper" target="_blank" rel="external">migration helper</a> on your codebase to find examples of <code>store.watch</code> with a string as the first argument.</p>
+</div>
+
+<h2 id="Store’s-Event-Emitter-deprecated"><a href="#Store’s-Event-Emitter-deprecated" class="headerlink" title="Store’s Event Emitter deprecated"></a>Store’s Event Emitter <sup>deprecated</sup></h2><p>The store instance no longer exposes the event emitter interface (<code>on</code>, <code>off</code>, <code>emit</code>). If you were previously using the store as a global event bus, <a href="http://vuejs.org/guide/migration.html#dispatch-and-broadcast-deprecated" target="_blank" rel="external">see this section</a> for migration instructions.</p>
+<p>Instead of using this interface to watch events emitted by the store itself (e.g. <code>store.on(&#39;mutation&#39;, callback)</code>), a new method <code>store.subscribe</code> is introduced. Typical usage inside a plugin would be:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> myPlugin = <span class="function"><span class="params">store</span> =&gt;</span> &#123;</div><div class="line">  store.subscribe(<span class="function"><span class="keyword">function</span> (<span class="params">mutation, state</span>) </span>&#123;</div><div class="line">    <span class="comment">// Do something...</span></div><div class="line">  &#125;)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>See example <a href="https://github.com/vuejs/vuex/blob/1.0/docs/en/plugins.md" target="_blank" rel="external">the plugins docs</a> for more info.</p>
+
+<div class="upgrade-path">
+  <h4>Upgrade Path</h4>
+  <p>Run the <a href="https://github.com/vuejs/vue-migration-helper" target="_blank" rel="external">migration helper</a> on your codebase to find examples of <code>store.on</code>, <code>store.off</code>, and <code>store.emit</code>.</p>
+</div>
+
+<h2 id="Middlewares-deprecated"><a href="#Middlewares-deprecated" class="headerlink" title="Middlewares deprecated"></a>Middlewares <sup>deprecated</sup></h2><p>Middlewares are replaced by plugins. A plugin is simply a function that receives the store as the only argument, and can listen to the mutation event on the store:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">const</span> myPlugins = <span class="function"><span class="params">store</span> =&gt;</span> &#123;</div><div class="line">  store.subscribe(<span class="string">'mutation'</span>, (mutation, state) =&gt; &#123;</div><div class="line">    <span class="comment">// Do something...</span></div><div class="line">  &#125;)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>For more details, see <a href="https://github.com/vuejs/vuex/blob/1.0/docs/en/plugins.md" target="_blank" rel="external">the plugins docs</a>.</p>
+
+<div class="upgrade-path">
+  <h4>Upgrade Path</h4>
+  <p>Run the <a href="https://github.com/vuejs/vue-migration-helper" target="_blank" rel="external">migration helper</a> on your codebase to find examples of the <code>middlewares</code> option on a store.</p>
+</div>
+
 
     
       <div class="guide-links">
         
-          <span>← <a href="/guide/index.html">介绍</a></span>
+          <span>← <a href="/guide/migration-vue-router.html">从Vue Router 0.7.x迁移</a></span>
         
         
-          <span style="float:right"><a href="/guide/syntax.html">模板语法</a> →</span>
+          <span style="float:right"><a href="/guide/comparison.html">对比其他框架</a> →</span>
         
       </div>
     
     <div class="footer">
       发现错误？想参与编辑？
-      <a href="https://github.com/dingyiming/vuejs.org/tree/2.0-cn/src/guide/instance.md" target="_blank">
+      <a href="https://github.com/dingyiming/vuejs.org/tree/2.0-cn/src/guide/migration-vuex.md" target="_blank">
         在 Github 上编辑此页！
       </a>
     </div>

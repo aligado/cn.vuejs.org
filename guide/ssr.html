@@ -14,8 +14,7 @@
         
         <script src="/js/vue.js"></script>
     </head>
-    <body>
-        <div id="mobile-bar" >
+    <body class="docs">        <div id="mobile-bar" >
             <a class="menu-button"></a>
             <a class="logo" href="/"></a>
         </div>
@@ -63,7 +62,7 @@
 </div>
 
         
-            <div id="main">
+            <div id="main" class="fix-sidebar">
                 
                     
     <div class="sidebar">
@@ -212,7 +211,7 @@
                 
                 
                 <li>
-                    <a href="/guide/transitions.html" class="sidebar-link">过渡: 进入, 离开, 和 列表</a>
+                    <a href="/guide/transitions.html" class="sidebar-link">过渡效果</a>
                 </li>
             
                 
@@ -284,6 +283,15 @@
                 
                 
                 <li>
+                    <a href="/guide/deployment.html" class="sidebar-link">Deploying For Production</a>
+                </li>
+            
+                
+                
+                
+                
+                
+                <li>
                     <a href="/guide/routing.html" class="sidebar-link">路由</a>
                 </li>
             
@@ -339,6 +347,15 @@
                 
                 
                 
+                <li>
+                    <a href="/guide/migration-vuex.html" class="sidebar-link">Migration from Vuex 0.6.x to 1.0</a>
+                </li>
+            
+                
+                
+                
+                
+                
                   <li><h3>更多</h3></li>
                 
                 <li>
@@ -361,8 +378,13 @@
 
 
 <div class="content guide with-sidebar ssr-guide">
-    	
-    <h1>服务端渲染</h1>
+    
+      
+
+    
+    
+      <h1>服务端渲染</h1>
+    
     <h2 id="需要服务端渲染（SSR）吗？"><a href="#需要服务端渲染（SSR）吗？" class="headerlink" title="需要服务端渲染（SSR）吗？"></a>需要服务端渲染（SSR）吗？</h2><p>在开始服务端渲染前，我们先看看它能给我们带来什么，以及什么时候需要用它。</p>
 <h3 id="SEO（搜索引擎优化）"><a href="#SEO（搜索引擎优化）" class="headerlink" title="SEO（搜索引擎优化）"></a>SEO（搜索引擎优化）</h3><p>谷歌和Bing可以很好地索引同步的JavaScript应用。<em>同步</em>在这里是个关键词。如果应用启动时有一个加载动画，然后内容通过ajax获取，那爬虫不会等待他们加载完成。</p>
 <p>这意味着在异步获取内容的页面上很需要进行搜索引擎优化的时候，服务端渲染就很重要。</p>

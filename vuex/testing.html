@@ -14,8 +14,7 @@
         
         <script src="/js/vue.js"></script>
     </head>
-    <body>
-        <div id="mobile-bar" >
+    <body class="docs">        <div id="mobile-bar" >
             <a class="menu-button"></a>
             <a class="logo" href="/"></a>
         </div>
@@ -63,7 +62,7 @@
 </div>
 
         
-            <div id="main">
+            <div id="main" class="fix-sidebar">
                 
                     
     <div class="sidebar">
@@ -256,8 +255,13 @@
 
 
 <div class="content vuex with-sidebar ">
-    	
-    <h1>测试</h1>
+    
+      
+
+    
+    
+      <h1>测试</h1>
+    
     <p>The main parts we want to unit test in Vuex are mutations and actions.</p>
 <h3 id="Testing-Mutations"><a href="#Testing-Mutations" class="headerlink" title="Testing Mutations"></a>Testing Mutations</h3><p>Mutations are very straightforward to test, because they are just functions that completely rely on their arguments. One trick is that if you are using ES2015 modules and put your mutations inside your <code>store.js</code> file, in addition to the default export, you can also export the mutations as a named export:</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">const</span> state = &#123; ... &#125;</div><div class="line"></div><div class="line"><span class="comment">// export mutations as a named export</span></div><div class="line"><span class="keyword">export</span> <span class="keyword">const</span> mutations = &#123; ... &#125;</div><div class="line"></div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">new</span> Vuex.Store(&#123;</div><div class="line">  state,</div><div class="line">  mutations</div><div class="line">&#125;)</div></pre></td></tr></table></figure>

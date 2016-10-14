@@ -14,8 +14,7 @@
         
         <script src="/js/vue.js"></script>
     </head>
-    <body>
-        <div id="mobile-bar" >
+    <body class="docs">        <div id="mobile-bar" >
             <a class="menu-button"></a>
             <a class="logo" href="/"></a>
         </div>
@@ -63,7 +62,7 @@
 </div>
 
         
-            <div id="main">
+            <div id="main" class="fix-sidebar">
                 
                     <div class="sidebar blog">
     <ul class="main-menu">
@@ -138,8 +137,9 @@
         </ul>
     </div>
 </div>
-<div class="content blog post">
-    	
+<div class="content with-sidebar blog post">
+    
+
     <h1>Why Vue.js doesn't support templateURL</h1>
     <h4>Oct 28, 2015</h4>
     <p>A very common question from new Vue users, especially those who used Angular before, is “can I have <code>templateURL</code>?”. I have answered this so many times and I figure it’s better to write something about it.</p>

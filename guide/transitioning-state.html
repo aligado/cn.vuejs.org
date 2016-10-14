@@ -14,8 +14,7 @@
         
         <script src="/js/vue.js"></script>
     </head>
-    <body>
-        <div id="mobile-bar" >
+    <body class="docs">        <div id="mobile-bar" >
             <a class="menu-button"></a>
             <a class="logo" href="/"></a>
         </div>
@@ -63,7 +62,7 @@
 </div>
 
         
-            <div id="main">
+            <div id="main" class="fix-sidebar">
                 
                     
     <div class="sidebar">
@@ -212,7 +211,7 @@
                 
                 
                 <li>
-                    <a href="/guide/transitions.html" class="sidebar-link">过渡: 进入, 离开, 和 列表</a>
+                    <a href="/guide/transitions.html" class="sidebar-link">过渡效果</a>
                 </li>
             
                 
@@ -284,6 +283,15 @@
                 
                 
                 <li>
+                    <a href="/guide/deployment.html" class="sidebar-link">Deploying For Production</a>
+                </li>
+            
+                
+                
+                
+                
+                
+                <li>
                     <a href="/guide/routing.html" class="sidebar-link">路由</a>
                 </li>
             
@@ -339,6 +347,15 @@
                 
                 
                 
+                <li>
+                    <a href="/guide/migration-vuex.html" class="sidebar-link">Migration from Vuex 0.6.x to 1.0</a>
+                </li>
+            
+                
+                
+                
+                
+                
                   <li><h3>更多</h3></li>
                 
                 <li>
@@ -361,8 +378,13 @@
 
 
 <div class="content guide with-sidebar transitioning-state-guide">
-    	
-    <h1>过渡状态</h1>
+    
+      
+
+    
+    
+      <h1>过渡状态</h1>
+    
     <p>Vue 的过渡系统提供了非常多简单的方法设置进入、离开和列表的动效。那么对于数据元素本身的动效呢，比如：</p>
 <ul>
 <li>数字和运算</li>
@@ -668,7 +690,7 @@ new Vue({
     
       <div class="guide-links">
         
-          <span>← <a href="/guide/transitions.html">过渡: 进入, 离开, 和 列表</a></span>
+          <span>← <a href="/guide/transitions.html">过渡效果</a></span>
         
         
           <span style="float:right"><a href="/guide/render-function.html">Render 函数</a> →</span>

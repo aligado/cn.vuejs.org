@@ -14,8 +14,7 @@
         
         <script src="/js/vue.js"></script>
     </head>
-    <body>
-        <div id="mobile-bar" >
+    <body class="docs">        <div id="mobile-bar" >
             <a class="menu-button"></a>
             <a class="logo" href="/"></a>
         </div>
@@ -63,7 +62,7 @@
 </div>
 
         
-            <div id="main">
+            <div id="main" class="fix-sidebar">
                 
                     
     <div class="sidebar">
@@ -256,8 +255,13 @@
 
 
 <div class="content vuex with-sidebar ">
-    	
-    <h1>应用结构</h1>
+    
+      
+
+    
+    
+      <h1>应用结构</h1>
+    
     <p>实际上，Vuex 在怎么组织你的代码结构上面没有任何限制，相反，它强制规定了一系列高级的原则：</p>
 <ol>
 <li><p>应用级的状态集中放在 store 中。</p>

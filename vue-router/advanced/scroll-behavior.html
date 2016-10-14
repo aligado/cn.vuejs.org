@@ -14,8 +14,7 @@
         
         <script src="/js/vue.js"></script>
     </head>
-    <body>
-        <div id="mobile-bar" >
+    <body class="docs">        <div id="mobile-bar" >
             <a class="menu-button"></a>
             <a class="logo" href="/"></a>
         </div>
@@ -63,7 +62,7 @@
 </div>
 
         
-            <div id="main">
+            <div id="main" class="fix-sidebar">
                 
                     
     <div class="sidebar">
@@ -312,8 +311,13 @@
 
 
 <div class="content vue-router with-sidebar ">
-    	
-    <h1>滚动行为</h1>
+    
+      
+
+    
+    
+      <h1>滚动行为</h1>
+    
     <p>使用前端路由，当切换到新路由时，想要页面滚到顶部，或者是保持原先的滚动位置，就像重新加载页面那样。 <code>vue-router</code> 能做到，而且更好，它让你可以自定义路由切换时页面如何滚动。</p>
 <p><strong>注意: 这个功能只在 HTML5 history 模式下可用。</strong></p>
 <p>当创建一个 Router 实例，你可以提供一个 <code>scrollBehavior</code> 方法：</p>

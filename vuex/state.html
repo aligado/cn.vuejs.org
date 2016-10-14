@@ -14,8 +14,7 @@
         
         <script src="/js/vue.js"></script>
     </head>
-    <body>
-        <div id="mobile-bar" >
+    <body class="docs">        <div id="mobile-bar" >
             <a class="menu-button"></a>
             <a class="logo" href="/"></a>
         </div>
@@ -63,7 +62,7 @@
 </div>
 
         
-            <div id="main">
+            <div id="main" class="fix-sidebar">
                 
                     
     <div class="sidebar">
@@ -256,8 +255,13 @@
 
 
 <div class="content vuex with-sidebar ">
-    	
-    <h1>State</h1>
+    
+      
+
+    
+    
+      <h1>State</h1>
+    
     <h3 id="单一状态树"><a href="#单一状态树" class="headerlink" title="单一状态树"></a>单一状态树</h3><p>Vuex 使用 <strong>单一状态树</strong> - 是的，用一个对象就包含了全部的应用层级状态，然后作为一个『唯一数据源(SSOT)』而存在。这也意味着，每一个应用将只有一个 store 实例。单一状态树让我们能够直接地定位任一特定的状态片段，在调试的过程中也能轻易地取得整个当前应用状态的快照。</p>
 <p>单状态树和模块化并不冲突 - 在后面的章节里我们会讨论如何将状态(state)和状态变更事件(mutation)分布到各个子模块中。</p>
 <h3 id="在-Vue-组件中获得-Vuex-状态"><a href="#在-Vue-组件中获得-Vuex-状态" class="headerlink" title="在 Vue 组件中获得 Vuex 状态"></a>在 Vue 组件中获得 Vuex 状态</h3><p>那么我们如何在 Vue 组件中展示状态呢？由于 Vuex 的状态存储是响应式的，从 store 实例中读取状态最简单的方法，就是在<a href="http://vuejs.org/guide/computed.html" target="_blank" rel="external">计算属性</a>的函数中直接返回某个 store 的状态：</p>

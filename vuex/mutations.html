@@ -14,8 +14,7 @@
         
         <script src="/js/vue.js"></script>
     </head>
-    <body>
-        <div id="mobile-bar" >
+    <body class="docs">        <div id="mobile-bar" >
             <a class="menu-button"></a>
             <a class="logo" href="/"></a>
         </div>
@@ -63,7 +62,7 @@
 </div>
 
         
-            <div id="main">
+            <div id="main" class="fix-sidebar">
                 
                     
     <div class="sidebar">
@@ -256,8 +255,13 @@
 
 
 <div class="content vuex with-sidebar ">
-    	
-    <h1>Mutations</h1>
+    
+      
+
+    
+    
+      <h1>Mutations</h1>
+    
     <p>在 Vuex store 中，实际改变 状态(state) 的唯一方式是通过 提交(commit) 一个 mutation。 Vuex 的 mutation 和事件系统非常相似：每个 mutation 都有一个字符串 <strong>类型(type)</strong> 和 一个 <strong>回调函数(handler)</strong>。回调函数是我们执行实际修改状态的地方，它将接收 状态(state) 作为第一个参数。</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">const</span> store = <span class="keyword">new</span> Vuex.Store(&#123;</div><div class="line">  <span class="attr">state</span>: &#123;</div><div class="line">    <span class="attr">count</span>: <span class="number">1</span></div><div class="line">  &#125;,</div><div class="line">  <span class="attr">mutations</span>: &#123;</div><div class="line">    increment (state) &#123;</div><div class="line">      <span class="comment">// 改变 state</span></div><div class="line">      state.count++</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
 <p>你不能直接调用 mutation 的回调函数。选项 mutations 在这里更像是注册事件：“当触发类型为 <code>increment</code> 的 mutation 时，执行其回调函数。”所以你需要调用该类型的 <strong>store.commit</strong> 才能执行 mutation 的回调函数。</p>

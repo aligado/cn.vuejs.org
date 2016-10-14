@@ -14,8 +14,7 @@
         
         <script src="/js/vue.js"></script>
     </head>
-    <body>
-        <div id="mobile-bar" >
+    <body class="docs">        <div id="mobile-bar" >
             <a class="menu-button"></a>
             <a class="logo" href="/"></a>
         </div>
@@ -63,7 +62,7 @@
 </div>
 
         
-            <div id="main">
+            <div id="main" class="fix-sidebar">
                 
                     
     <div class="sidebar">
@@ -312,8 +311,13 @@
 
 
 <div class="content vue-router with-sidebar ">
-    	
-    <h1>路由信息对象</h1>
+    
+      
+
+    
+    
+      <h1>路由信息对象</h1>
+    
     <p>一个 <strong>route object（路由信息对象）</strong> 表示当前激活的路由的状态信息，包含了当前 URL 解析得到的信息，还有 URL 匹配到的 <strong>route records（路由记录）</strong>。</p>
 <p>route object 是 immutable（不可变） 的，每次成功的导航后都会产生一个新的对象。</p>
 <p>route object 出现在多个地方:</p>

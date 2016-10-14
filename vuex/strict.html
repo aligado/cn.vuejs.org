@@ -14,8 +14,7 @@
         
         <script src="/js/vue.js"></script>
     </head>
-    <body>
-        <div id="mobile-bar" >
+    <body class="docs">        <div id="mobile-bar" >
             <a class="menu-button"></a>
             <a class="logo" href="/"></a>
         </div>
@@ -63,7 +62,7 @@
 </div>
 
         
-            <div id="main">
+            <div id="main" class="fix-sidebar">
                 
                     
     <div class="sidebar">
@@ -256,8 +255,13 @@
 
 
 <div class="content vuex with-sidebar ">
-    	
-    <h1>严格模式</h1>
+    
+      
+
+    
+    
+      <h1>严格模式</h1>
+    
     <h1 id="严格模式"><a href="#严格模式" class="headerlink" title="严格模式"></a>严格模式</h1><p>要启用严格模式，只需在创建 Vuex store 的时候简单地传入 <code>strict: true</code>。</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">const</span> store = <span class="keyword">new</span> Vuex.Store(&#123;</div><div class="line">  <span class="comment">// ...</span></div><div class="line">  strict: <span class="literal">true</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure>
 <p>在严格模式下，只要 Vuex 状态在 mutation 方法外被修改就会抛出错误。这确保了所有状态修改都会明确的被调试工具跟踪。</p>

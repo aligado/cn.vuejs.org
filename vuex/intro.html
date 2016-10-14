@@ -14,8 +14,7 @@
         
         <script src="/js/vue.js"></script>
     </head>
-    <body>
-        <div id="mobile-bar" >
+    <body class="docs">        <div id="mobile-bar" >
             <a class="menu-button"></a>
             <a class="logo" href="/"></a>
         </div>
@@ -63,7 +62,7 @@
 </div>
 
         
-            <div id="main">
+            <div id="main" class="fix-sidebar">
                 
                     
     <div class="sidebar">
@@ -256,8 +255,13 @@
 
 
 <div class="content vuex with-sidebar ">
-    	
-    <h1>什么是 Vuex</h1>
+    
+      
+
+    
+    
+      <h1>什么是 Vuex</h1>
+    
     <p>Vuex 是一个专门为 Vue.js 应用设计的 <strong>状态管理模型 + 库</strong>。它为应用内的所有组件提供集中式存储服务，其中的规则确保状态只能按预期方式变更。它可以与 Vue 官方<a href="https://github.com/vuejs/vue-devtools" target="_blank" rel="external">开发工具扩展(devtools extension)</a> 集成，提供高级特征，比如 零配置时空旅行般（基于时间轴）调试，以及状态快照 导出/导入。</p>
 <h3 id="什么是”状态管理模型“？"><a href="#什么是”状态管理模型“？" class="headerlink" title="什么是”状态管理模型“？"></a>什么是”状态管理模型“？</h3><p>让我们从一个简单的 Vue 计数器应用开始：</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">new</span> Vue(&#123;</div><div class="line">  <span class="comment">// state (状态)</span></div><div class="line">  data () &#123;</div><div class="line">    <span class="keyword">return</span> &#123;</div><div class="line">      <span class="attr">count</span>: <span class="number">0</span></div><div class="line">    &#125;</div><div class="line">  &#125;,</div><div class="line">  <span class="comment">// view (视图)</span></div><div class="line">  template: <span class="string">`</span></div><div class="line">    &lt;div&gt;&#123;&#123; count &#125;&#125;&lt;/div&gt;</div><div class="line">  `,</div><div class="line">  <span class="comment">// actions (动作)</span></div><div class="line">  methods: &#123;</div><div class="line">    increment () &#123;</div><div class="line">      <span class="keyword">this</span>.count++</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>

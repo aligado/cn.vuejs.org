@@ -14,8 +14,7 @@
         
         <script src="/js/vue.js"></script>
     </head>
-    <body>
-        <div id="mobile-bar" >
+    <body class="docs">        <div id="mobile-bar" >
             <a class="menu-button"></a>
             <a class="logo" href="/"></a>
         </div>
@@ -63,7 +62,7 @@
 </div>
 
         
-            <div id="main">
+            <div id="main" class="fix-sidebar">
                 
                     
     <div class="sidebar">
@@ -256,8 +255,13 @@
 
 
 <div class="content vuex with-sidebar ">
-    	
-    <h1>表单处理</h1>
+    
+      
+
+    
+    
+      <h1>表单处理</h1>
+    
     <p>When using Vuex in strict mode, it could be a bit tricky to use <code>v-model</code> on a piece of state that belongs to Vuex:</p>
 <figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">v-model</span>=<span class="string">"obj.message"</span>&gt;</span></div></pre></td></tr></table></figure>
 <p>Assuming <code>obj</code> is a computed property that returns an Object from the store, the <code>v-model</code> here will attempt to directly mutate <code>obj.message</code> when the user types in the input. In strict mode, this will result in an error because the mutation is not performed inside an explicit Vuex mutation handler.</p>

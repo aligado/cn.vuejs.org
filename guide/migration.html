@@ -14,8 +14,7 @@
         
         <script src="/js/vue.js"></script>
     </head>
-    <body>
-        <div id="mobile-bar" >
+    <body class="docs">        <div id="mobile-bar" >
             <a class="menu-button"></a>
             <a class="logo" href="/"></a>
         </div>
@@ -63,7 +62,7 @@
 </div>
 
         
-            <div id="main">
+            <div id="main" class="fix-sidebar">
                 
                     
     <div class="sidebar">
@@ -212,7 +211,7 @@
                 
                 
                 <li>
-                    <a href="/guide/transitions.html" class="sidebar-link">过渡: 进入, 离开, 和 列表</a>
+                    <a href="/guide/transitions.html" class="sidebar-link">过渡效果</a>
                 </li>
             
                 
@@ -284,6 +283,15 @@
                 
                 
                 <li>
+                    <a href="/guide/deployment.html" class="sidebar-link">Deploying For Production</a>
+                </li>
+            
+                
+                
+                
+                
+                
+                <li>
                     <a href="/guide/routing.html" class="sidebar-link">路由</a>
                 </li>
             
@@ -339,6 +347,15 @@
                 
                 
                 
+                <li>
+                    <a href="/guide/migration-vuex.html" class="sidebar-link">Migration from Vuex 0.6.x to 1.0</a>
+                </li>
+            
+                
+                
+                
+                
+                
                   <li><h3>更多</h3></li>
                 
                 <li>
@@ -361,8 +378,13 @@
 
 
 <div class="content guide with-sidebar migration-guide">
-    	
-    <h1>从 Vue1.x 迁移</h1>
+    
+      
+
+    
+    
+      <h1>从 Vue1.x 迁移</h1>
+    
     <h2 id="FAQ"><a href="#FAQ" class="headerlink" title="FAQ"></a>FAQ</h2><blockquote>
 <p>哇，非常长的一页！是否意味着 Vue2.0 已经完全不同了呢，是否需要从头学起呢，Vue1.0 的项目是不是没法迁移了？</p>
 </blockquote>
@@ -786,9 +808,9 @@ new Vue({
 <figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">v-for</span>=<span class="string">"user in users | filterBy searchQuery in 'name'"</span>&gt;</span>&#123;&#123; user.name &#125;&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div></pre></td></tr></table></figure>
 <p>在 computed 属性中使用js内置方法 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter#Examples" target="_blank" rel="external"><code>.filter</code> method</a>：</p>
 <figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">v-for</span>=<span class="string">"user in filteredUsers"</span>&gt;</span>&#123;&#123; user.name &#125;&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight js"><table><tr><td class="code"><pre><div class="line">computed: &#123;</div><div class="line">  <span class="attr">filteredUsers</span>: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.users.filter(<span class="function"><span class="keyword">function</span> (<span class="params">user</span>) </span>&#123;</div><div class="line">      <span class="keyword">return</span> user.name.indexOf(<span class="keyword">this</span>.searchQuery)</div><div class="line">    &#125;)</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line">computed: &#123;</div><div class="line">  <span class="attr">filteredUsers</span>: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> self = <span class="keyword">this</span></div><div class="line">    <span class="keyword">return</span> self.users.filter(<span class="function"><span class="keyword">function</span> (<span class="params">user</span>) </span>&#123;</div><div class="line">      <span class="keyword">return</span> user.name.indexOf(self.searchQuery) !== <span class="number">-1</span></div><div class="line">    &#125;)</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>js原生的 <code>.filter</code> 同样能实现很多复杂的过滤器操作，因为可以在计算 computed 属性中使用所有js方法。比如，想要通过匹配用户名字和电子邮箱地址（不区分大小写）找到用户：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">this</span>.users.filter(<span class="function"><span class="keyword">function</span> (<span class="params">user</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> searchRegex = <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="keyword">this</span>.searchQuery, <span class="string">'i'</span>)</div><div class="line">  <span class="keyword">return</span> user.isActive &amp;&amp; (</div><div class="line">    searchRegex.test(user.name) ||</div><div class="line">    searchRegex.test(user.email)</div><div class="line">  )</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> self = <span class="keyword">this</span></div><div class="line">self.users.filter(<span class="function"><span class="keyword">function</span> (<span class="params">user</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> searchRegex = <span class="keyword">new</span> <span class="built_in">RegExp</span>(self.searchQuery, <span class="string">'i'</span>)</div><div class="line">  <span class="keyword">return</span> user.isActive &amp;&amp; (</div><div class="line">    searchRegex.test(user.name) ||</div><div class="line">    searchRegex.test(user.email)</div><div class="line">  )</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
 <h4 id="替换-orderBy-过滤器"><a href="#替换-orderBy-过滤器" class="headerlink" title="替换 orderBy 过滤器"></a>替换 <code>orderBy</code> 过滤器</h4><p>不这样写：</p>
 <figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">v-for</span>=<span class="string">"user in users | orderBy 'name'"</span>&gt;</span>&#123;&#123; user.name &#125;&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div></pre></td></tr></table></figure>
 <p>而是在 computed 属性中使用 <a href="https://lodash.com/docs/4.15.0#orderBy" target="_blank" rel="external">lodash’s <code>orderBy</code></a> (or possibly <a href="https://lodash.com/docs/4.15.0#sortBy" target="_blank" rel="external"><code>sortBy</code></a>)：</p>
@@ -822,7 +844,7 @@ new Vue({
 <figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">pluralizeKnife</span> (<span class="params">count</span>) </span>&#123;</div><div class="line">  <span class="keyword">if</span> (count === <span class="number">0</span>) &#123;</div><div class="line">    <span class="keyword">return</span> <span class="string">'no knives'</span></div><div class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (count === <span class="number">1</span>) &#123;</div><div class="line">    <span class="keyword">return</span> <span class="string">'1 knife'</span></div><div class="line">  &#125; <span class="keyword">else</span> &#123;</div><div class="line">    <span class="keyword">return</span> count + <span class="string">'knives'</span></div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h4 id="Replacing-the-currency-Filter"><a href="#Replacing-the-currency-Filter" class="headerlink" title="Replacing the currency Filter"></a>Replacing the <code>currency</code> Filter</h4><p>对于简单的问题,可以这样做：</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="string">'$'</span> + price.toFixed(<span class="number">2</span>)</div></pre></td></tr></table></figure>
-<p>大多数情况下，仍然会有奇怪的现象(比如 <code>0.035.toFixed(2)</code> 向上舍入得到 <code>0.4</code>,但是 <code>0.045</code> 向下舍入却也得到 <code>0.4</code>)。解决这些问题可以使用 <a href="http://openexchangerates.github.io/accounting.js/" target="_blank" rel="external"><code>accounting</code></a> 库来实现更多货币格式化。</p>
+<p>大多数情况下，仍然会有奇怪的现象(比如 <code>0.035.toFixed(2)</code> 向上取舍得到 <code>0.4</code>,但是 <code>0.045</code> 向下取舍却也得到 <code>0.4</code>)。解决这些问题可以使用 <a href="http://openexchangerates.github.io/accounting.js/" target="_blank" rel="external"><code>accounting</code></a> 库来实现更多可靠的货币格式化。</p>
 
 <div class="upgrade-path">
   <h4>升级方式</h4>

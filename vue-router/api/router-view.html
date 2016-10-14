@@ -14,8 +14,7 @@
         
         <script src="/js/vue.js"></script>
     </head>
-    <body>
-        <div id="mobile-bar" >
+    <body class="docs">        <div id="mobile-bar" >
             <a class="menu-button"></a>
             <a class="logo" href="/"></a>
         </div>
@@ -63,7 +62,7 @@
 </div>
 
         
-            <div id="main">
+            <div id="main" class="fix-sidebar">
                 
                     
     <div class="sidebar">
@@ -312,8 +311,13 @@
 
 
 <div class="content vue-router with-sidebar ">
-    	
-    <h1>router-view</h1>
+    
+      
+
+    
+    
+      <h1>router-view</h1>
+    
     <p><code>&lt;router-view&gt;</code> 组件是一个 functional 组件，渲染路径匹配到的视图组件。<code>&lt;router-view&gt;</code> 渲染的组件还可以内嵌自己的 <code>&lt;router-view&gt;</code>，根据嵌套路径，渲染嵌套组件。</p>
 <h3 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h3><ul>
 <li><p><strong>name</strong></p>
