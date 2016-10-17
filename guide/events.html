@@ -283,7 +283,7 @@
                 
                 
                 <li>
-                    <a href="/guide/deployment.html" class="sidebar-link">Deploying For Production</a>
+                    <a href="/guide/deployment.html" class="sidebar-link">生产环境部署</a>
                 </li>
             
                 
@@ -339,7 +339,7 @@
                 
                 
                 <li>
-                    <a href="/guide/migration-vue-router.html" class="sidebar-link">从Vue Router 0.7.x迁移</a>
+                    <a href="/guide/migration-vue-router.html" class="sidebar-link">从 Vue Router 0.7.x 迁移</a>
                 </li>
             
                 
@@ -477,7 +477,7 @@ new Vue({
 <li>right</li>
 </ul>
 <p>可以通过全局 <code>config.keyCodes</code> 对象<a href="/api/#keyCodes">自定义按键修饰符别名</a>：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="comment">// 可以使用 @keyup.f1</span></div><div class="line">Vue.config.keyCodes.f1 = <span class="number">112</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="comment">// 可以使用 v-on:keyup.f1</span></div><div class="line">Vue.config.keyCodes.f1 = <span class="number">112</span></div></pre></td></tr></table></figure>
 <h2 id="为什么在-HTML-中监听事件"><a href="#为什么在-HTML-中监听事件" class="headerlink" title="为什么在 HTML 中监听事件?"></a>为什么在 HTML 中监听事件?</h2><p>你可能注意到这种事件监听的方式违背了传统理念 “separation of concern” 。不必担心，因为所有的 Vue.js 事件处理方法和表达式都严格绑定在当前视图的 ViewModel 上，它不会导致任何维护上的困难。实际上，使用 <code>v-on</code> 有几个好处：</p>
 <ol>
 <li><p>扫一眼 HTML 模板便能轻松定位在 JavaScript 代码里对应的方法。</p>

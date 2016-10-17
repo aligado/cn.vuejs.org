@@ -283,7 +283,7 @@
                 
                 
                 <li>
-                    <a href="/guide/deployment.html" class="sidebar-link">Deploying For Production</a>
+                    <a href="/guide/deployment.html" class="sidebar-link">生产环境部署</a>
                 </li>
             
                 
@@ -339,7 +339,7 @@
                 
                 
                 <li>
-                    <a href="/guide/migration-vue-router.html" class="sidebar-link">从Vue Router 0.7.x迁移</a>
+                    <a href="/guide/migration-vue-router.html" class="sidebar-link">从 Vue Router 0.7.x 迁移</a>
                 </li>
             
                 
@@ -385,17 +385,17 @@
     
       <h1>Vue 实例</h1>
     
-    <h2 id="构造器"><a href="#构造器" class="headerlink" title="构造器"></a>构造器</h2><p>每个 Vue.js 应用的起步都是通过构造函数 <code>Vue</code> 创建一个 <strong>Vue 的根实例</strong>：</p>
+    <h2 id="构造器"><a href="#构造器" class="headerlink" title="构造器"></a>构造器</h2><p>每个 Vue.js 应用都是通过构造函数 <code>Vue</code> 创建一个 <strong>Vue 的根实例</strong> 启动的：</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> vm = <span class="keyword">new</span> Vue(&#123;</div><div class="line">  <span class="comment">// 选项</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure>
-<p>一个 Vue 实例其实正是一个 <a href="https://en.wikipedia.org/wiki/Model_View_ViewModel" target="_blank" rel="external">MVVM 模式</a>中所描述的 ViewModel - 因此在文档中经常会使用 <code>vm</code> 这个变量名。</p>
+<p>虽然没有完全遵循 <a href="https://en.wikipedia.org/wiki/Model_View_ViewModel" target="_blank" rel="external">MVVM 模式</a>， Vue 的设计无疑受到了它的启发。因此在文档中经常会使用 <code>vm</code> 这个变量名表示 Vue 实例。</p>
 <p>在实例化 Vue 时，需要传入一个<strong>选项对象</strong>，它可以包含数据、模板、挂载元素、方法、生命周期钩子等选项。全部的选项可以在 <a href="/api">API 文档</a>中查看。</p>
 <p>可以扩展 <code>Vue</code> 构造器，从而用预定义选项创建可复用的<strong>组件构造器</strong>：</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> MyComponent = Vue.extend(&#123;</div><div class="line">  <span class="comment">// 扩展选项</span></div><div class="line">&#125;)</div><div class="line"></div><div class="line"><span class="comment">// 所有的 `MyComponent` 实例都将以预定义的扩展选项被创建</span></div><div class="line"><span class="keyword">var</span> myComponentInstance = <span class="keyword">new</span> MyComponent()</div></pre></td></tr></table></figure>
-<p>尽管可以命令式地创建扩展实例，不过在多数情况下将组件构造器注册为一个自定义元素，然后声明式地用在模板中。我们将在后面详细说明<a href="/guide/components.html">组件系统</a>。现在你只需知道所有的 Vue.js 组件其实都是被扩展的 Vue 实例。</p>
+<p>尽管可以命令式地创建扩展实例，不过在多数情况下建议将组件构造器注册为一个自定义元素，然后声明式地用在模板中。我们将在后面详细说明<a href="/guide/components.html">组件系统</a>。现在你只需知道所有的 Vue.js 组件其实都是被扩展的 Vue 实例。</p>
 <h2 id="属性与方法"><a href="#属性与方法" class="headerlink" title="属性与方法"></a>属性与方法</h2><p>每个 Vue 实例都会<strong>代理</strong>其 <code>data</code> 对象里所有的属性：</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> data = &#123; <span class="attr">a</span>: <span class="number">1</span> &#125;</div><div class="line"><span class="keyword">var</span> vm = <span class="keyword">new</span> Vue(&#123;</div><div class="line">  <span class="attr">data</span>: data</div><div class="line">&#125;)</div><div class="line"></div><div class="line">vm.a === data.a <span class="comment">// -&gt; true</span></div><div class="line"></div><div class="line"><span class="comment">// 设置属性也会影响到原始数据</span></div><div class="line">vm.a = <span class="number">2</span></div><div class="line">data.a <span class="comment">// -&gt; 2</span></div><div class="line"></div><div class="line"><span class="comment">// ... 反之亦然</span></div><div class="line">data.a = <span class="number">3</span></div><div class="line">vm.a <span class="comment">// -&gt; 3</span></div></pre></td></tr></table></figure>
 <p>注意只有这些被代理的属性是<strong>响应的</strong>。如果在实例创建之后添加新的属性到实例上，它不会触发视图更新。我们将在后面详细讨论响应系统。</p>
-<p>除了这些数据属性， Vue 实例暴露了一些有用的实例属性与方法。这些属性与方法都有前缀 <code>$</code>，以便与代理的数据属性区分。例如：</p>
+<p>除了 data 属性， Vue 实例暴露了一些有用的实例属性与方法。这些属性与方法都有前缀 <code>$</code>，以便与代理的 data 属性区分。例如：</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> data = &#123; <span class="attr">a</span>: <span class="number">1</span> &#125;</div><div class="line"><span class="keyword">var</span> vm = <span class="keyword">new</span> Vue(&#123;</div><div class="line">  <span class="attr">el</span>: <span class="string">'#example'</span>,</div><div class="line">  <span class="attr">data</span>: data</div><div class="line">&#125;)</div><div class="line"></div><div class="line">vm.$data === data <span class="comment">// -&gt; true</span></div><div class="line">vm.$el === <span class="built_in">document</span>.getElementById(<span class="string">'example'</span>) <span class="comment">// -&gt; true</span></div><div class="line"></div><div class="line"><span class="comment">// $watch 是一个实例方法</span></div><div class="line">vm.$watch(<span class="string">'a'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">newVal, oldVal</span>) </span>&#123;</div><div class="line">  <span class="comment">// 这个回调将在 `vm.a`  改变后调用</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure>
 <p class="tip">注意，不要在实例属性或者回调函数中（如 <code>vm.$watch(&#39;a&#39;, newVal =&gt; this.myMethod())</code>）使用<a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Functions/Arrow_functions" target="_blank" rel="external">箭头函数</a>。因为箭头函数绑定父上下文，所以 <code>this</code> 不会像预想的一样是 Vue 实例，而是 <code>this.myMethod</code> 未被定义。</p>
 

@@ -283,7 +283,7 @@
                 
                 
                 <li>
-                    <a href="/guide/deployment.html" class="sidebar-link">Deploying For Production</a>
+                    <a href="/guide/deployment.html" class="sidebar-link">生产环境部署</a>
                 </li>
             
                 
@@ -339,7 +339,7 @@
                 
                 
                 <li>
-                    <a href="/guide/migration-vue-router.html" class="sidebar-link">从Vue Router 0.7.x迁移</a>
+                    <a href="/guide/migration-vue-router.html" class="sidebar-link">从 Vue Router 0.7.x 迁移</a>
                 </li>
             
                 
@@ -573,7 +573,7 @@
   <p>运行端对端测试，将会弹出 <strong>failed tests</strong> 来通知你使用 <code>props</code> 的根实例已经失效。</p>
 </div>
 
-<h2 id="Built-In-指令"><a href="#Built-In-指令" class="headerlink" title="Built-In 指令"></a>Built-In 指令</h2><h3 id="v-bind-真-假值"><a href="#v-bind-真-假值" class="headerlink" title="v-bind 真/假值"></a><code>v-bind</code> 真/假值</h3><p>在2.0中使用 <code>v-bind</code> 时, 只有 <code>null</code>, <code>undefined</code> , 和 <code>false</code> 被看作是假。这意味着，<code>0</code> 和空字符串将被作为真值渲染。比如 <code>v-bind:draggable=&quot;&#39;&#39;&quot;</code> 将被渲染为 <code>draggable=&quot;true&quot;</code>。</p>
+<h2 id="Built-In-指令"><a href="#Built-In-指令" class="headerlink" title="Built-In 指令"></a>Built-In 指令</h2><h3 id="v-bind-真-假值"><a href="#v-bind-真-假值" class="headerlink" title="v-bind 真/假值"></a><code>v-bind</code> 真/假值</h3><p>在2.0中使用 <code>v-bind</code> 时，只有 <code>null</code>, <code>undefined</code> , 和 <code>false</code> 被看作是假。这意味着，<code>0</code> 和空字符串将被作为真值渲染。比如 <code>v-bind:draggable=&quot;&#39;&#39;&quot;</code> 将被渲染为 <code>draggable=&quot;true&quot;</code>。</p>
 <p>对于枚举属性，除了以上假值之外，字符串 <code>&quot;false&quot;</code> 也会被渲染为 <code>attr=&quot;false&quot;</code>。</p>
 <p class="tip">注意，对于其它钩子 (如 <code>v-if</code> 和 <code>v-show</code>)， 他们依然遵循 js 对真假值判断的一般规则。</p>
 
@@ -844,7 +844,7 @@ new Vue({
 <figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">pluralizeKnife</span> (<span class="params">count</span>) </span>&#123;</div><div class="line">  <span class="keyword">if</span> (count === <span class="number">0</span>) &#123;</div><div class="line">    <span class="keyword">return</span> <span class="string">'no knives'</span></div><div class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (count === <span class="number">1</span>) &#123;</div><div class="line">    <span class="keyword">return</span> <span class="string">'1 knife'</span></div><div class="line">  &#125; <span class="keyword">else</span> &#123;</div><div class="line">    <span class="keyword">return</span> count + <span class="string">'knives'</span></div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h4 id="Replacing-the-currency-Filter"><a href="#Replacing-the-currency-Filter" class="headerlink" title="Replacing the currency Filter"></a>Replacing the <code>currency</code> Filter</h4><p>对于简单的问题,可以这样做：</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="string">'$'</span> + price.toFixed(<span class="number">2</span>)</div></pre></td></tr></table></figure>
-<p>大多数情况下，仍然会有奇怪的现象(比如 <code>0.035.toFixed(2)</code> 向上取舍得到 <code>0.4</code>,但是 <code>0.045</code> 向下取舍却也得到 <code>0.4</code>)。解决这些问题可以使用 <a href="http://openexchangerates.github.io/accounting.js/" target="_blank" rel="external"><code>accounting</code></a> 库来实现更多可靠的货币格式化。</p>
+<p>大多数情况下，仍然会有奇怪的现象(比如 <code>0.035.toFixed(2)</code> 向上取舍得到 <code>0.04</code>,但是 <code>0.045</code> 向下取舍却也得到 <code>0.04</code>)。解决这些问题可以使用 <a href="http://openexchangerates.github.io/accounting.js/" target="_blank" rel="external"><code>accounting</code></a> 库来实现更多可靠的货币格式化。</p>
 
 <div class="upgrade-path">
   <h4>升级方式</h4>
@@ -1127,7 +1127,7 @@ new Vue({
           <span>← <a href="/guide/ssr.html">服务端渲染</a></span>
         
         
-          <span style="float:right"><a href="/guide/migration-vue-router.html">从Vue Router 0.7.x迁移</a> →</span>
+          <span style="float:right"><a href="/guide/migration-vue-router.html">从 Vue Router 0.7.x 迁移</a> →</span>
         
       </div>
     

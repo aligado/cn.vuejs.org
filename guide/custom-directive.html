@@ -283,7 +283,7 @@
                 
                 
                 <li>
-                    <a href="/guide/deployment.html" class="sidebar-link">Deploying For Production</a>
+                    <a href="/guide/deployment.html" class="sidebar-link">生产环境部署</a>
                 </li>
             
                 
@@ -339,7 +339,7 @@
                 
                 
                 <li>
-                    <a href="/guide/migration-vue-router.html" class="sidebar-link">从Vue Router 0.7.x迁移</a>
+                    <a href="/guide/migration-vue-router.html" class="sidebar-link">从 Vue Router 0.7.x 迁移</a>
                 </li>
             
                 
@@ -409,7 +409,7 @@ new Vue({
 <figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">v-focus</span>&gt;</span></div></pre></td></tr></table></figure>
 <h2 id="钩子函数"><a href="#钩子函数" class="headerlink" title="钩子函数"></a>钩子函数</h2><p>指令定义函数提供了几个钩子函数（可选）：</p>
 <ul>
-<li><p><code>bind</code>: 只调用一次, 指令第一次绑定到元素时调用，用这个钩子函数可以定义一个在绑定时执行一次的初始化动作。</p>
+<li><p><code>bind</code>: 只调用一次，指令第一次绑定到元素时调用，用这个钩子函数可以定义一个在绑定时执行一次的初始化动作。</p>
 </li>
 <li><p><code>inserted</code>: 被绑定元素插入父节点时调用（父节点存在即可调用，不必存在于 document 中）。</p>
 </li>
@@ -427,16 +427,16 @@ new Vue({
 <li><strong>binding</strong>: 一个对象，包含以下属性：<ul>
 <li><strong>name</strong>: 指令名，不包括 <code>v-</code> 前缀。</li>
 <li><strong>value</strong>: 指令的绑定值， 例如： <code>v-my-directive=&quot;1 + 1&quot;</code>, value 的值是 <code>2</code>。</li>
-<li><strong>oldValue</strong>: 指令绑定的前一个值, 仅在 <code>update</code> 和 <code>componentUpdated</code> 钩子中可用。无论值是否改变都可用。</li>
+<li><strong>oldValue</strong>: 指令绑定的前一个值，仅在 <code>update</code> 和 <code>componentUpdated</code> 钩子中可用。无论值是否改变都可用。</li>
 <li><strong>expression</strong>: 绑定值的字符串形式。 例如 <code>v-my-directive=&quot;1 + 1&quot;</code> ， expression 的值是 <code>&quot;1 + 1&quot;</code>。</li>
 <li><strong>arg</strong>: 传给指令的参数。例如 <code>v-my-directive:foo</code>， arg 的值是 <code>&quot;foo&quot;</code>。</li>
 <li><strong>modifiers</strong>: 一个包含修饰符的对象。 例如： <code>v-my-directive.foo.bar</code>, 修饰符对象 modifiers 的值是 <code>{ foo: true, bar: true }</code>。</li>
 </ul>
 </li>
-<li><strong>vnode</strong>: Vue 编译生成的虚拟节点, 查阅 <a href="/api/#VNode-Interface">VNode API</a> 了解更多详情。</li>
-<li><strong>oldVnode</strong>: 上一个虚拟节点, 仅在 <code>update</code> 和 <code>componentUpdated</code> 钩子中可用。</li>
+<li><strong>vnode</strong>: Vue 编译生成的虚拟节点，查阅 <a href="/api/#VNode-Interface">VNode API</a> 了解更多详情。</li>
+<li><strong>oldVnode</strong>: 上一个虚拟节点，仅在 <code>update</code> 和 <code>componentUpdated</code> 钩子中可用。</li>
 </ul>
-<p class="tip">除了 <code>el</code> 之外, 其它参数都应该是只读的，尽量不要修改他们。如果需要在钩子之间共享数据，建议通过元素的 <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/dataset" target="_blank" rel="external">dataset</a> 来进行。</p>
+<p class="tip">除了 <code>el</code> 之外，其它参数都应该是只读的，尽量不要修改他们。如果需要在钩子之间共享数据，建议通过元素的 <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/dataset" target="_blank" rel="external">dataset</a> 来进行。</p>
 
 <p>一个使用了这些参数的自定义钩子样例：</p>
 <figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"hook-arguments-example"</span> <span class="attr">v-demo:hello.a.b</span>=<span class="string">"message"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>

@@ -283,7 +283,7 @@
                 
                 
                 <li>
-                    <a href="/guide/deployment.html" class="sidebar-link">Deploying For Production</a>
+                    <a href="/guide/deployment.html" class="sidebar-link">生产环境部署</a>
                 </li>
             
                 
@@ -339,7 +339,7 @@
                 
                 
                 <li>
-                    <a href="/guide/migration-vue-router.html" class="sidebar-link">从Vue Router 0.7.x迁移</a>
+                    <a href="/guide/migration-vue-router.html" class="sidebar-link">从 Vue Router 0.7.x 迁移</a>
                 </li>
             
                 
@@ -440,7 +440,7 @@ var example2 = new Vue({
 })
 </script>
 
-<p>你也可以用 <code>of</code> 替代 <code>in</code> 作为分隔符, 所以它是最接近 JavaScript 迭代器的语法：</p>
+<p>你也可以用 <code>of</code> 替代 <code>in</code> 作为分隔符，所以它是最接近 JavaScript 迭代器的语法：</p>
 <figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">v-for</span>=<span class="string">"item of items"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
 <h3 id="Template-v-for"><a href="#Template-v-for" class="headerlink" title="Template v-for"></a>Template v-for</h3><p>如同 <code>v-if</code> 模板，你也可以用带有 <code>v-for</code> 的 <code>&lt;template&gt;</code> 标签来渲染多个元素块。例如： </p>
 <figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">template</span> <span class="attr">v-for</span>=<span class="string">"item in items"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>&#123;&#123; item.msg &#125;&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"divider"</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">template</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div></pre></td></tr></table></figure>
@@ -548,24 +548,24 @@ new Vue({
 <li><code>reverse()</code></li>
 </ul>
 <p>你打开控制台，然后用前面例子的 <code>items</code> 数组调用突变方法：<code>example1.items.push({ measage: &#39;Baz&#39; })</code> 。</p>
-<h3 id="重塑数组"><a href="#重塑数组" class="headerlink" title="重塑数组"></a>重塑数组</h3><p>重塑数组，顾名思义，改变原始数组的称呼。相比之下，也有不改变原组数的方法，例如： <code>filter()</code> ， <code>concat()</code> ， <code>slice()</code> 。这些不会改变原始数组，但总是返回一个新的数组。当用不改变原数组的方法时，你只需替换旧数组用新的：</p>
+<h3 id="重塑数组"><a href="#重塑数组" class="headerlink" title="重塑数组"></a>重塑数组</h3><p>重塑数组，顾名思义，改变原始数组的称呼。相比之下，也有不改变原数组的方法，例如： <code>filter()</code> ， <code>concat()</code> ， <code>slice()</code> 。这些不会改变原始数组，但总是返回一个新的数组。当用不改变原数组的方法时，你只需替换旧数组用新的：</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><div class="line">example1.items = example1.items.filter(<span class="function"><span class="keyword">function</span> (<span class="params">item</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> item.message.match(<span class="regexp">/Foo/</span>)</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
 <p>你可能认为这将导致 Vue 丢掉现有 DOM 并重新渲染整个列表。幸运的是，事实并非如此。 Vue 实现了一些智能化去最大化的重用 DOM 元素，所以用另外含有重叠对象的数组替换数组是非常高效的操作。</p>
 <h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><p>由于 JavaScript 的限制， Vue 不能检测以下变动的数组：</p>
 <ol>
-<li>当你直接设置一个项的索引时, 例如： <code>vm.items[indexOfItem] = newValue</code></li>
-<li>当你修改数组的长度时, 例如： <code>vm.items.length = newLength</code></li>
+<li>当你直接设置一个项的索引时，例如： <code>vm.items[indexOfItem] = newValue</code></li>
+<li>当你修改数组的长度时，例如： <code>vm.items.length = newLength</code></li>
 </ol>
-<p>为了避免第一种情况, 以下两种方式将达到像 <code>vm.items[indexOfItem] = newValue</code> 的效果， 同时也将触发状态更新:</p>
+<p>为了避免第一种情况，以下两种方式将达到像 <code>vm.items[indexOfItem] = newValue</code> 的效果， 同时也将触发状态更新:</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="comment">// Vue.set</span></div><div class="line">Vue.set(example1.items, indexOfItem, newValue)</div></pre></td></tr></table></figure>
 <figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="comment">// Array.prototype.splice`</span></div><div class="line">example1.items.splice(indexOfItem, <span class="number">1</span>, newValue)</div></pre></td></tr></table></figure>
-<p>避免第二种情况, 使用 <code>splice</code>:</p>
+<p>避免第二种情况，使用 <code>splice</code>:</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><div class="line">example1.items.splice(newLength)</div></pre></td></tr></table></figure>
 <h2 id="显示过滤-排序结果"><a href="#显示过滤-排序结果" class="headerlink" title="显示过滤/排序结果"></a>显示过滤/排序结果</h2><p>有时我们无需实际改变或重置原始数据对数组进行过滤或排序。在这种情况下，你可以创建计算的属性返回过滤或排序的数组。</p>
 <p>例如:</p>
 <figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">li</span> <span class="attr">v-for</span>=<span class="string">"n in evenNumbers"</span>&gt;</span>&#123;&#123; n &#125;&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div></pre></td></tr></table></figure>
 <figure class="highlight js"><table><tr><td class="code"><pre><div class="line">data: &#123;</div><div class="line">  <span class="attr">numbers</span>: [ <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span> ]</div><div class="line">&#125;,</div><div class="line"><span class="attr">computed</span>: &#123;</div><div class="line">  <span class="attr">evenNumbers</span>: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.numbers.filter(<span class="function"><span class="keyword">function</span> (<span class="params">number</span>) </span>&#123;</div><div class="line">      <span class="keyword">return</span> number % <span class="number">2</span> === <span class="number">0</span></div><div class="line">    &#125;)</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>此外, 你也可以只使用一种方法计算 (例如： 嵌套在 <code>v-for</code> 里循环)，但是性能是低效的:</p>
+<p>此外，你也可以只使用一种方法计算 (例如： 嵌套在 <code>v-for</code> 里循环)，但是性能是低效的:</p>
 <figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">li</span> <span class="attr">v-for</span>=<span class="string">"n in even(numbers)"</span>&gt;</span>&#123;&#123; n &#125;&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div></pre></td></tr></table></figure>
 <figure class="highlight js"><table><tr><td class="code"><pre><div class="line">data: &#123;</div><div class="line">  <span class="attr">numbers</span>: [ <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span> ]</div><div class="line">&#125;,</div><div class="line"><span class="attr">methods</span>: &#123;</div><div class="line">  <span class="attr">even</span>: <span class="function"><span class="keyword">function</span> (<span class="params">numbers</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> numbers.filter(<span class="function"><span class="keyword">function</span> (<span class="params">number</span>) </span>&#123;</div><div class="line">      <span class="keyword">return</span> number % <span class="number">2</span> === <span class="number">0</span></div><div class="line">    &#125;)</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <hr>

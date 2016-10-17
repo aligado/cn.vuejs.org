@@ -321,7 +321,7 @@
     <blockquote>
 <p>（译者：『导航』表示路由正在发生改变。）</p>
 </blockquote>
-<p>正如其名，<code>vue-router</code> 提供的导航钩子主要用来拦截导航，让它完成跳转或取消。有多种方式可以在路由导航发生时执行钩子：全局的, 单个路由独享的, 或者组件级的。</p>
+<p>正如其名，<code>vue-router</code> 提供的导航钩子主要用来拦截导航，让它完成跳转或取消。有多种方式可以在路由导航发生时执行钩子：全局的，单个路由独享的，或者组件级的。</p>
 <h3 id="全局钩子"><a href="#全局钩子" class="headerlink" title="全局钩子"></a>全局钩子</h3><p>你可以使用 <code>router.beforeEach</code> 注册一个全局的 <code>before</code> 钩子：</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">const</span> router = <span class="keyword">new</span> VueRouter(&#123; ... &#125;)</div><div class="line"></div><div class="line">router.beforeEach(<span class="function">(<span class="params">to, <span class="keyword">from</span>, next</span>) =&gt;</span> &#123;</div><div class="line">  <span class="comment">// ...</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure>
 <p>当一个导航触发时，全局的 <code>before</code> 钩子按照创建顺序调用。钩子是异步解析执行，此时导航在所有钩子 resolve 完之前一直处于 <strong>等待中</strong>。</p>

@@ -283,7 +283,7 @@
                 
                 
                 <li>
-                    <a href="/guide/deployment.html" class="sidebar-link">Deploying For Production</a>
+                    <a href="/guide/deployment.html" class="sidebar-link">生产环境部署</a>
                 </li>
             
                 
@@ -339,7 +339,7 @@
                 
                 
                 <li>
-                    <a href="/guide/migration-vue-router.html" class="sidebar-link">从Vue Router 0.7.x迁移</a>
+                    <a href="/guide/migration-vue-router.html" class="sidebar-link">从 Vue Router 0.7.x 迁移</a>
                 </li>
             
                 
@@ -393,7 +393,7 @@
 <h3 id="客户端运行在老的-或者直接没有-JavaScript引擎上"><a href="#客户端运行在老的-或者直接没有-JavaScript引擎上" class="headerlink" title="客户端运行在老的(或者直接没有)JavaScript引擎上"></a>客户端运行在老的(或者直接没有)JavaScript引擎上</h3><p>对于世界上的一些地区人，可能只能用1998年产的电脑访问互联网的方式使用计算机。而Vue只能运行在IE9以上的浏览器，你可以也想为那些老式浏览器提供基础内容 - 或者是在命令行中使用 <a href="http://lynx.browser.org/" target="_blank" rel="external">Lynx</a>的时髦的黑客。</p>
 <h3 id="服务端渲染-对比-预渲染-Prerendering"><a href="#服务端渲染-对比-预渲染-Prerendering" class="headerlink" title="服务端渲染 对比 预渲染(Prerendering)"></a>服务端渲染 对比 预渲染(Prerendering)</h3><p>如果你只是用服务端渲染来改善一个少数的营销页面（如 首页，关于，联系 等等）的SEO，那你可以用<strong>预渲染</strong>替换。预渲染不像服务器渲染那样即时编译HTML,预渲染只是在构建时为了特定的路由生成特定的几个静态页面。其优势是预渲染的设置更加简单，可以保持前端是一个完整的静态站。</p>
 <p>你用webpack可以很简单地通过<a href="https://github.com/chrisvfritz/prerender-spa-plugin" target="_blank" rel="external">prerender-spa-plugin</a>来添加预渲染，它被广泛地用在Vue应用上 - 事实上，创建者也是Vue核心团队成员之一。</p>
-<h2 id="Hello-World"><a href="#Hello-World" class="headerlink" title="Hello World"></a>Hello World</h2><p>准备在行动中体验服务端渲染吧。服务端渲染(即SSR)听起来很复杂, 不过一个简单的Node脚本只需要3步就可以实现这个功能:</p>
+<h2 id="Hello-World"><a href="#Hello-World" class="headerlink" title="Hello World"></a>Hello World</h2><p>准备在行动中体验服务端渲染吧。服务端渲染(即SSR)听起来很复杂，不过一个简单的Node脚本只需要3步就可以实现这个功能:</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="comment">// 步骤 1:创建一个Vue实例</span></div><div class="line"><span class="keyword">var</span> Vue = <span class="built_in">require</span>(<span class="string">'vue'</span>)</div><div class="line"><span class="keyword">var</span> app = <span class="keyword">new</span> Vue(&#123;</div><div class="line">  <span class="attr">render</span>: <span class="function"><span class="keyword">function</span> (<span class="params">h</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> h(<span class="string">'p'</span>, <span class="string">'hello world'</span>)</div><div class="line">  &#125;</div><div class="line">&#125;)</div><div class="line"></div><div class="line"><span class="comment">// 步骤 2: 创建一个渲染器</span></div><div class="line"><span class="keyword">var</span> renderer = <span class="built_in">require</span>(<span class="string">'vue-server-renderer'</span>).createRenderer()</div><div class="line"></div><div class="line"><span class="comment">// 步骤 3: 将 Vue实例 渲染成 HTML</span></div><div class="line"></div><div class="line">renderer.renderToString(app, <span class="function"><span class="keyword">function</span> (<span class="params">error, html</span>) </span>&#123;</div><div class="line">  <span class="keyword">if</span> (error) <span class="keyword">throw</span> error</div><div class="line">  <span class="built_in">console</span>.log(html)</div><div class="line">  <span class="comment">// =&gt; &lt;p server-rendered="true"&gt;hello world&lt;/p&gt;</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure>
 <p>这并不困难。当然这个示例比大部分应用都简单。我们不必担心：</p>
 <ul>
