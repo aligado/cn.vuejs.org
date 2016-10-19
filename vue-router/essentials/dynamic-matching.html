@@ -46,6 +46,7 @@
 <li><a href="/vue-router/" class="nav-link current">vue-router</a></li>
 <li><a href="/vuex/" class="nav-link">vuex</a></li>
 <li><a href="/examples/" class="nav-link">示例</a></li>
+<li><a href="http://webpack.vuefe.cn" target="_blank">webpack</a></li>
 <li><a href="/more/" class="nav-link">更多</a></li>
 <li class="nav-dropdown-container">
   <a class="nav-link">社区</a><span class="arrow"></span>
@@ -73,6 +74,7 @@
 <li><a href="/vue-router/" class="nav-link current">vue-router</a></li>
 <li><a href="/vuex/" class="nav-link">vuex</a></li>
 <li><a href="/examples/" class="nav-link">示例</a></li>
+<li><a href="http://webpack.vuefe.cn" target="_blank">webpack</a></li>
 <li><a href="/more/" class="nav-link">更多</a></li>
 <li class="nav-dropdown-container">
   <a class="nav-link">社区</a><span class="arrow"></span>
@@ -312,11 +314,8 @@
 
 <div class="content vue-router with-sidebar ">
     
-      
-
-    
-    
       <h1>动态路由匹配</h1>
+    
     
     <p>我们经常需要把某种模式匹配到的所有路由，全都映射到同个组件。例如，我们有一个 <code>User</code> 组件，对于所有 ID 各不相同的用户，都要使用这个组件来渲染。那么，我们可以在  <code>vue-router</code> 的路由路径中使用『动态路径参数』（dynamic segment）来达到这个效果：</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">const</span> User = &#123;</div><div class="line">  <span class="attr">template</span>: <span class="string">'&lt;div&gt;User&lt;/div&gt;'</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">const</span> router = <span class="keyword">new</span> VueRouter(&#123;</div><div class="line">  <span class="attr">routes</span>: [</div><div class="line">    <span class="comment">// 动态路径参数 以冒号开头</span></div><div class="line">    &#123; <span class="attr">path</span>: <span class="string">'/user/:id'</span>, <span class="attr">component</span>: User &#125;</div><div class="line">  ]</div><div class="line">&#125;)</div></pre></td></tr></table></figure>

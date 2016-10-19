@@ -46,6 +46,7 @@
 <li><a href="/vue-router/" class="nav-link">vue-router</a></li>
 <li><a href="/vuex/" class="nav-link current">vuex</a></li>
 <li><a href="/examples/" class="nav-link">示例</a></li>
+<li><a href="http://webpack.vuefe.cn" target="_blank">webpack</a></li>
 <li><a href="/more/" class="nav-link">更多</a></li>
 <li class="nav-dropdown-container">
   <a class="nav-link">社区</a><span class="arrow"></span>
@@ -73,6 +74,7 @@
 <li><a href="/vue-router/" class="nav-link">vue-router</a></li>
 <li><a href="/vuex/" class="nav-link current">vuex</a></li>
 <li><a href="/examples/" class="nav-link">示例</a></li>
+<li><a href="http://webpack.vuefe.cn" target="_blank">webpack</a></li>
 <li><a href="/more/" class="nav-link">更多</a></li>
 <li class="nav-dropdown-container">
   <a class="nav-link">社区</a><span class="arrow"></span>
@@ -256,11 +258,8 @@
 
 <div class="content vuex with-sidebar ">
     
-      
-
-    
-    
       <h1>Modules</h1>
+    
     
     <h1 id="Modules"><a href="#Modules" class="headerlink" title="Modules"></a>Modules</h1><p>由于使用了单一状态树，应用的所有状态都包含在一个大对象内。但是，随着我们应用规模的不断增长，这个Store变得非常臃肿。</p>
 <p>为了解决这个问题，Vuex 允许我们把 store 分 module（模块）。每一个模块包含各自的状态、mutation、action 和 getter，甚至是嵌套模块， 如下就是它的组织方式：</p>
@@ -271,7 +270,7 @@
 <figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">const</span> moduleA = &#123;</div><div class="line">  <span class="comment">// ...</span></div><div class="line">  actions: &#123;</div><div class="line">    incrementIfOdd (&#123; state, commit &#125;) &#123;</div><div class="line">      <span class="keyword">if</span> (state.count % <span class="number">2</span> === <span class="number">1</span>) &#123;</div><div class="line">        commit(<span class="string">'increment'</span>)</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>在模块的 getters 内，根状态也会作为第三个参数暴露。</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">const</span> moduleA = &#123;</div><div class="line">  <span class="comment">// ...</span></div><div class="line">  getters: &#123;</div><div class="line">    sumWithRootCount (state, getters, rootState) &#123;</div><div class="line">      <span class="keyword">return</span> state.count + rootState.count</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="命名空间"><a href="#命名空间" class="headerlink" title="命名空间"></a>命名空间</h3><p>要注意，模块内的 actions、mutations 以及 getters 依然注册在<strong>全局命名空间</strong>内 —— 这就会让多个模块响应同一种 mutation/action 类型。你可以在模块的名称中加入前缀或者后缀来设定命名空间，从而避免命名冲突。如果你的 Vuex 模块是一个可复用的，执行环境也未知的，那你就应该这么干了。距离，我们想要创建一个 <code>todos</code> 模块：</p>
+<h3 id="命名空间"><a href="#命名空间" class="headerlink" title="命名空间"></a>命名空间</h3><p>要注意，模块内的 actions、mutations 以及 getters 依然注册在<strong>全局命名空间</strong>内 —— 这就会让多个模块响应同一种 mutation/action 类型。你可以在模块的名称中加入前缀或者后缀来设定命名空间，从而避免命名冲突。如果你的 Vuex 模块是一个可复用的，执行环境也未知的，那你就应该这么干了。例如，我们想要创建一个 <code>todos</code> 模块：</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="comment">// types.js</span></div><div class="line"></div><div class="line"><span class="comment">// 定义  getter、 action 和 mutation 的常量名称</span></div><div class="line"><span class="comment">// 并且在模块名称上加上 `todos` 前缀 </span></div><div class="line"><span class="keyword">export</span> <span class="keyword">const</span> DONE_COUNT = <span class="string">'todos/DONE_COUNT'</span></div><div class="line"><span class="keyword">export</span> <span class="keyword">const</span> FETCH_ALL = <span class="string">'todos/FETCH_ALL'</span></div><div class="line"><span class="keyword">export</span> <span class="keyword">const</span> TOGGLE_DONE = <span class="string">'todos/TOGGLE_DONE'</span></div></pre></td></tr></table></figure>
 <figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="comment">// modules/todos.js</span></div><div class="line"><span class="keyword">import</span> * <span class="keyword">as</span> types <span class="keyword">from</span> <span class="string">'../types'</span></div><div class="line"></div><div class="line"><span class="comment">// 用带前缀的名称来定义 getters, actions and mutations </span></div><div class="line"><span class="keyword">const</span> todosModule = &#123;</div><div class="line">  <span class="attr">state</span>: &#123; <span class="attr">todos</span>: [] &#125;,</div><div class="line"></div><div class="line">  <span class="attr">getters</span>: &#123;</div><div class="line">    [types.DONE_COUNT] (state) &#123;</div><div class="line">      <span class="comment">// ...</span></div><div class="line">    &#125;</div><div class="line">  &#125;,</div><div class="line"></div><div class="line">  <span class="attr">actions</span>: &#123;</div><div class="line">    [types.FETCH_ALL] (context, payload) &#123;</div><div class="line">      <span class="comment">// ...</span></div><div class="line">    &#125;</div><div class="line">  &#125;,</div><div class="line"></div><div class="line">  <span class="attr">mutations</span>: &#123;</div><div class="line">    [types.TOGGLE_DONE] (state, payload) &#123;</div><div class="line">      <span class="comment">// ...</span></div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="注册动态模块"><a href="#注册动态模块" class="headerlink" title="注册动态模块"></a>注册动态模块</h3><p>你可以用 <code>store.registerModule</code> 方法在 store 创建<strong>之后</strong>注册一个模块：</p>
